@@ -5,6 +5,7 @@ import {
   Redirect
 } from 'react-router-dom'
 import Home from '../screens/home'
+import Login from '../screens/login'
 
 const Routes = () => {
   return (
@@ -12,6 +13,9 @@ const Routes = () => {
       <Switch>
         <Route exact path='/'>
           <Home />
+        </Route>
+        <Route path='/login'>
+          <Login></Login>
         </Route>
         {/* <PrivateRoute exact path="/home">
                     <Home />
