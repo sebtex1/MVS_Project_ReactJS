@@ -14,8 +14,14 @@ const Routes = () => {
         <Route exact path='/'>
           <Home />
         </Route>
-        <Route path='/login'>
-          <Login></Login>
+        <Route exact path='/login'>
+          <Login />
+        </Route>
+        <Route exact path='/details'>
+          <Home />
+        </Route>
+        <Route exact path='/favoris'>
+          <Home />
         </Route>
         {/* <PrivateRoute exact path="/home">
                     <Home />
