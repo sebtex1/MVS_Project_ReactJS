@@ -1,9 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
-import styled from "styled-components";
+import styled from 'styled-components'
 
-
-
-const Input = (props) => {
+const Input = props => {
   return (
     <StyledInput
       type={props.typeInput}
@@ -29,9 +28,8 @@ const StyledInput = styled.input`
   padding-left: 6px;
   border: 4px solid;
   @media (min-width: 968px) {
-    width: 524px
+    width: 524px;
   }
 `
 
-export default Input;
-
+export default Input

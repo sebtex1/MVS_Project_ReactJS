@@ -29,7 +29,7 @@ const Header = props => {
           >
             {theme === 'lightTheme' ? <MoonIcon /> : <SunIcon />}
           </Button>
-          {window.location.pathname === '/login' ? (
+          {window.location.pathname !== '/login' ? (
             <Button>
               <PersonIcon onClick={() => history.push('/login')} />
             </Button>
