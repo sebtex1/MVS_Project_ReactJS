@@ -48,7 +48,10 @@ const Name = styled.h1`
 const GamePage = styled.h3`
   right: 0;
   text-align: center;
-  font-weight: ${window.location.pathname === '/' ? 'bold' : 'normal'};
+  font-weight: ${window.location.pathname === '/' /*||
+  window.location.pathname === '/details' */
+    ? 'bold'
+    : 'normal'};
   margin-right: 1%;
   margin-left: 1%;
   color: ${props => props.theme.textColor};

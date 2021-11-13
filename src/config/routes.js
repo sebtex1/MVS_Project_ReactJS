@@ -16,6 +16,9 @@ const Routes = () => {
         <Route exact path='/login'>
           <Home />
         </Route>
+        <Route exact path='/details'>
+          <Home />
+        </Route>
         <Route exact path='/favoris'>
           <Home />
         </Route>
