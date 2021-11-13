@@ -13,7 +13,7 @@ const TopNavbar = () => {
       <Name>Games</Name>
       <GamePage>Liste des jeux</GamePage>
       <FavPage>Liste des favoris</FavPage>
-      <Log>Me déconnecter</Log>
+      <Log>Connexion</Log>
       <ButtonTheme
         onClick={() =>
           dispatch(
