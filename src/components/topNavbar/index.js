@@ -10,10 +10,11 @@ const TopNavbar = () => {
   const dispatch = useDispatch()
   const theme = useSelector(state => state.theme.value)
   const history = useHistory()
+  console.log(process.env.REACT_APP_NAME)
 
   return (
     <Container>
-      <Name>Games</Name>
+      <Name>{process.env.REACT_APP_NAME}</Name>
       <GamePage>Liste des jeux</GamePage>
       <FavPage>Liste des favoris</FavPage>
       <Log onClick={() => history.push('/login')}>Connexion</Log>
