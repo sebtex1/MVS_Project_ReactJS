@@ -5,7 +5,8 @@ const darkTheme = {
   gameTagColor: '#E2E2E2',
   subTextColor: '#D0D0CE',
   priceColor: '#636CC2',
-  navbarColor: '#F2F2F2'
+  navbarColor: '#3C4449',
+  themeBtnColor: '#FFFFFF'
 }
 
 const lightTheme = {
@@ -15,7 +16,8 @@ const lightTheme = {
   gameTagColor: '#E2E2E2', // couleur des tags dans le infos des jeux
   subTextColor: '#D0D0CE', // couleur pour le number des tags
   priceColor: '#636CC2',
-  navbarColor: '#F2F2F2'
+  navbarColor: '#F2F2F2',
+  themeBtnColor: '#041C44'
 }
 
 export { darkTheme, lightTheme }

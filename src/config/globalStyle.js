@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
     background: teal;
     color: ${props => props.theme.textColor};
     background-color: ${props => props.theme.primary};
-    /* font-family: Open-Sans, Helvetica, Sans-Serif; */
+    font-family: Open-Sans, Helvetica, Sans-Serif;
     /* border-color: ${props => props.theme.borderColor}; */
     /* overscroll-behavior: none; */
   }
