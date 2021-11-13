@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import allTheActions from '../../actions'
 import styled from 'styled-components'
 import { SunFill } from '@styled-icons/bootstrap/SunFill'
@@ -11,6 +12,7 @@ const Header = props => {
   const dispatch = useDispatch()
   const theme = useSelector(state => state.theme.value)
   const display = useSelector(state => state.display.value)
+  const history = useHistory()
   return (
     <Container>
       <Name>{props.title}</Name>
@@ -27,9 +29,11 @@ const Header = props => {
           >
             {theme === 'lightTheme' ? <MoonIcon /> : <SunIcon />}
           </Button>
-          <Button>
-            <PersonIcon />
-          </Button>
+          {window.location.pathname === '/login' ? (
+            <Button>
+              <PersonIcon onClick={() => history.push('/login')} />
+            </Button>
+          ) : null}
         </div>
       ) : null}
     </Container>

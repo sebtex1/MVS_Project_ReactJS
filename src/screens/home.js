@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import Header from '../components/header'
+import Navbar from './navbar'
 
 const Home = () => {
   return (
-    <Container>
-      <Header title='Games' />
-    </Container>
+    <div>
+      <Navbar />
+      <Container>
+        <Header title='Games' />
+      </Container>
+    </div>
   )
 }
 

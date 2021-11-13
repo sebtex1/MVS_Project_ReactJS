@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import allTheActions from '../../actions'
 import styled from 'styled-components'
 import { SunFill } from '@styled-icons/bootstrap/SunFill'
@@ -8,12 +9,14 @@ import { MoonStarsFill } from '@styled-icons/bootstrap/MoonStarsFill'
 const TopNavbar = () => {
   const dispatch = useDispatch()
   const theme = useSelector(state => state.theme.value)
+  const history = useHistory()
+
   return (
     <Container>
       <Name>Games</Name>
       <GamePage>Liste des jeux</GamePage>
       <FavPage>Liste des favoris</FavPage>
-      <Log>Connexion</Log>
+      <Log onClick={() => history.push('/login')}>Connexion</Log>
       <ButtonTheme
         onClick={() =>
           dispatch(

@@ -1,11 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import allTheActions from '../actions';
+import allTheActions from '../actions'
 
-import Input from '../components/input/index'
+import Input from '../components/input'
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -16,7 +17,7 @@ const Login = () => {
 
   const token = localStorage.getItem('token')
 
-  useEffect(() => { }, [username])
+  useEffect(() => {}, [username])
 
   useEffect(() => {
     // const interval = setInterval(() => {
@@ -53,7 +54,6 @@ const Login = () => {
     window.localStorage.setItem('token', null)
     window.location.reload(false)
   }
-
 
   return (
     <StyledContainer>
@@ -125,7 +125,6 @@ const Login = () => {
 }
 
 const StyledContainer = styled.div`
-
   height: 100vh;
   padding: 0px 20px;
   @media (min-width: 968px) {
@@ -153,7 +152,6 @@ const StyledParagraphe = styled.div`
 `
 
 const StyledForm = styled.form`
-
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -183,7 +181,7 @@ const StyledButton = styled.button`
   color: white;
   border: none;
   @media (min-width: 968px) {
-    width: 338px
+    width: 338px;
   }
 `
 const StyledButtonLogOut = styled.button`
@@ -202,7 +200,6 @@ const StyledButtonLogOut = styled.button`
     width: 338px;
   }
 `
-
 
 const StyledButtonTheme = styled.button`
   width: 30px;
