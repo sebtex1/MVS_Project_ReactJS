@@ -11,9 +11,9 @@ const TopNavbar = () => {
   return (
     <Container>
       <Name>Games</Name>
-      <Page>Liste des jeux</Page>
-      <Page>Liste des favoris</Page>
-      <Page>Me déconnecter</Page>
+      <GamePage>Liste des jeux</GamePage>
+      <FavPage>Liste des favoris</FavPage>
+      <Log>Me déconnecter</Log>
       <ButtonTheme
         onClick={() =>
           dispatch(
@@ -45,9 +45,26 @@ const Name = styled.h1`
   margin-left: 5%;
   color: ${props => props.theme.textColor};
 `
-const Page = styled.h3`
+const GamePage = styled.h3`
   right: 0;
   text-align: center;
+  font-weight: ${window.location.pathname === '/' ? 'bold' : 'normal'};
+  margin-right: 1%;
+  margin-left: 1%;
+  color: ${props => props.theme.textColor};
+`
+const FavPage = styled.h3`
+  right: 0;
+  text-align: center;
+  font-weight: ${window.location.pathname === '/favoris' ? 'bold' : 'normal'};
+  margin-right: 1%;
+  margin-left: 1%;
+  color: ${props => props.theme.textColor};
+`
+const Log = styled.h3`
+  right: 0;
+  text-align: center;
+  font-weight: normal;
   margin-right: 1%;
   margin-left: 1%;
   color: ${props => props.theme.textColor};

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
 import { Search } from '@styled-icons/feather/Search'
@@ -8,11 +9,19 @@ import { HeartFill } from '@styled-icons/bootstrap/HeartFill'
 const BottomNavbar = () => {
   return (
     <Container>
-      <ButtonIcon>
-        <SearchIcon />
+      <ButtonIcon onClick={() => console.log()}>
+        {window.location.pathname === '/' ? (
+          <SearchOutlineIcon />
+        ) : (
+          <SearchIcon />
+        )}
       </ButtonIcon>
       <ButtonIcon>
-        <HeartIcon />
+        {window.location.pathname === '/favoris' ? (
+          <HeartFillIcon />
+        ) : (
+          <HeartIcon />
+        )}
       </ButtonIcon>
       <Theme>FR</Theme>
     </Container>
