@@ -5,8 +5,13 @@ import { Search } from '@styled-icons/feather/Search'
 import { SearchOutline } from '@styled-icons/evaicons-outline/SearchOutline'
 import { Heart } from '@styled-icons/bootstrap/Heart'
 import { HeartFill } from '@styled-icons/bootstrap/HeartFill'
+import { useTranslation } from 'react-i18next'
 
 const BottomNavbar = () => {
+  const { i18n } = useTranslation()
+  const translate = val => {
+    i18n.changeLanguage(val)
+  }
   return (
     <Container>
       <ButtonIcon onClick={() => console.log()}>
@@ -23,7 +28,15 @@ const BottomNavbar = () => {
           <HeartIcon />
         )}
       </ButtonIcon>
-      <Theme>FR</Theme>
+      {i18n.language === 'en-US' ? (
+        <Theme onClick={() => translate('fr-FR')}>
+          <h3>EN</h3>
+        </Theme>
+      ) : (
+        <Theme onClick={() => translate('en-US')}>
+          <h3>FR</h3>
+        </Theme>
+      )}
     </Container>
   )
 }
@@ -46,9 +59,17 @@ const ButtonIcon = styled.button`
   border: none;
 `
 
-const Theme = styled.h4`
+// const Theme = styled.h4`
+//   flex: 1;
+//   text-align: center;
+// `
+
+const Theme = styled.button`
+  border: none;
+  background: none;
+  color: ${props => props.theme.textColor};
+  margin-right: 2%;
   flex: 1;
-  text-align: center;
 `
 
 // Icons

@@ -40,11 +40,17 @@ const Header = props => {
   )
 }
 
+const getDisplay = () => {
+  const display = useSelector(state => state.display.value)
+  return display.width < 1024 ? '5%' : '2%'
+}
+
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: right;
-  margin-top: 5%;
+  margin-top: ${getDisplay};
+  margin-bottom: ${getDisplay};
 `
 
 const Name = styled.h1`

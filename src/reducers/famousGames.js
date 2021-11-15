@@ -1,12 +1,12 @@
-import { CHANGE_DISPLAY } from '../actions/display'
+import { GET_FAMOUS_GAMES } from '../actions/famousGames'
 
 const initialState = {
-  value: { width: 1200, height: 800 }
+  value: []
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CHANGE_DISPLAY:
+    case GET_FAMOUS_GAMES:
       return {
         ...state,
         value: action.value
