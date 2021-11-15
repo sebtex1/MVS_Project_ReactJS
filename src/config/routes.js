@@ -5,7 +5,6 @@ import {
   Redirect
 } from 'react-router-dom'
 import Home from '../screens/home'
-import Login from '../screens/login'
 import GameDetails from '../screens/gameDetail'
 
 const Routes = () => {
@@ -16,7 +15,7 @@ const Routes = () => {
           <Home />
         </Route>
         <Route exact path='/login'>
-          <Login />
+          <Home />
         </Route>
         <Route exact path='/details'>
           <GameDetails />
