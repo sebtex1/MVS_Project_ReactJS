@@ -80,6 +80,9 @@ const ContainerChild = styled.div`
 const StyledDescription = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
   justify-content: space-between;
   align-items: space-between;
 `
