@@ -8,7 +8,7 @@ import styled from 'styled-components'
 const Pictures = props => {
   const dispatch = useDispatch()
   const listGames = useSelector(state => state.famousGames.value)
-  console.log(listGames.data.top_sellers.items)
+  // console.log(listGames.data.top_sellers.items)
 
   useEffect(() => {
     dispatch(
