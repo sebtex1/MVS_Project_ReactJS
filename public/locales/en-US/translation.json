@@ -5,5 +5,9 @@
   "Games": "Games",
   "AllTheGames": "All the games",
   "FamousGames": "Famous games",
-  "SearchAGame": "Search a game"
+  "SearchAGame": "Search a game",
+  "DetailDescription": "Description",
+  "DetailDevelopper": "Developper",
+  "DetailPublished": "Published",
+  "DetailPrice": "Price"
 }

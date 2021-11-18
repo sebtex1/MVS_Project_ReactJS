@@ -5,5 +5,9 @@
   "Games": "Jeux",
   "AllTheGames": "Tous les jeux",
   "FamousGames": "Les jeux du moments",
-  "SearchAGame": "Recherchez un jeu"
+  "SearchAGame": "Recherchez un jeu",
+  "DetailDescription": "Description",
+  "DetailDevelopper": "Développeur",
+  "DetailPublished": "Publié",
+  "DetailPrice": "Prix"
 }

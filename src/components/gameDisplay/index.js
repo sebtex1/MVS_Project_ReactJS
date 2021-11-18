@@ -3,15 +3,22 @@ import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import Tag from '../tag'
+import { useHistory } from 'react-router-dom'
 
 const GameDisplay = props => {
   const price = props.price.split(' ')[0]
   const currency = props.price.split(' ')[1]
+  const history = useHistory()
   return (
     <Container>
-      <Image src={props.image} />
+      <Image
+        src={props.image}
+        onClick={() => history.push(`details/${props.id}`)}
+      />
       <InfosContainer>
-        <Title>{props.title}</Title>
+        <Title onClick={() => history.push(`details/${props.id}`)}>
+          {props.title}
+        </Title>
         <Price>
           {price.length === 1
             ? `0.0${price}`

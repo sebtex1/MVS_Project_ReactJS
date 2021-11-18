@@ -17,9 +17,7 @@ const Routes = () => {
         <Route exact path='/login'>
           <Home />
         </Route>
-        <Route exact path='/details'>
-          <GameDetails />
-        </Route>
+        <Route exact path='/details/:id' component={GameDetails} />
         <Route exact path='/favoris'>
           <Home />
         </Route>

@@ -1,70 +1,110 @@
 import React, { useEffect } from 'react'
-import axios from 'axios'
 import DetailVideo from '../components/gameDetails'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import allTheActions from '../actions'
 import { Star } from '@styled-icons/boxicons-regular/Star'
-
+import { useParams } from 'react-router-dom'
+import GameDisplay from '../components/gameDisplay'
 import DetailTag from '../components/gameDetails/tag'
+import Navbar from './navbar'
+import { useTranslation } from 'react-i18next'
 
 const GameDetails = () => {
-  //const [details, setDetails] = useState({})
+  const dispatch = useDispatch()
+  const { id } = useParams()
+  const detailsGame = useSelector(state => state.gameDetails.value)
+  const listOfGames = useSelector(state => state.gamesApi.value)
+  const { t } = useTranslation()
 
   useEffect(() => {
-    axios({
-      method: 'GET',
-      url: 'http://store.steampowered.com/api/appdetails/',
-      params: {
-        appids: 1551360
-      }
-    }).then(response => {
-      console.log(response.data)
-      //setDetails(response.data.meals[0])
-    })
-  }, [])
+    if (id !== undefined) {
+      dispatch(
+        allTheActions.gameDetails.callDetailsGame({
+          url: 'https://store.steampowered.com/api/appdetails?appids=',
+          id: id
+        })
+      )
+      dispatch(
+        allTheActions.gamesApi.callApiGames(
+          'https://store.steampowered.com/api/featured/'
+        )
+      )
+    }
+  }, [id])
 
   return (
     <div>
+      <Navbar />
       <DetailVideo />
       <Container>
         <ContainerChild>
-          <div>
-            <TitleGame>
-              Forza Horizon 5 <IconStar />
-            </TitleGame>
-          </div>
-          <StyledTitle>
+          {detailsGame?.data ? (
             <div>
-              <DetailTag />
+              <TitleGame>
+                {detailsGame.data?.name} <IconStar />
+              </TitleGame>
+              <StyledTitle>
+                {detailsGame.data?.genre?.map(item => {
+                  console.log(item)
+                  return (
+                    <div key={item}>
+                      <DetailTag />
+                    </div>
+                  )
+                })}
+              </StyledTitle>
+
+              <h2>{t('DetailDescription')}</h2>
+              <p>{detailsGame.data?.short_description}</p>
+              <StyledDescription>
+                <div>
+                  <h2>{t('DetailDevelopper')}</h2>
+                  {detailsGame.data?.developers?.map(item => {
+                    return (
+                      <div key={item}>
+                        <p>{item}</p>
+                      </div>
+                    )
+                  })}
+                </div>
+                <div>
+                  <h2>{t('DetailPublished')}</h2>
+                  <p>{detailsGame.data?.publishers}</p>
+                </div>
+                <div>
+                  <h2>{t('DetailPrice')}</h2>
+                  <p>{detailsGame.data?.price_overview?.final_formatted}</p>
+                </div>
+              </StyledDescription>
             </div>
-          </StyledTitle>
-          <h2>Description</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <StyledDescription>
-            <div>
-              <h2>Developpers</h2>
-              <p>Melvin le boss</p>
-            </div>
-            <div>
-              <h2>Published</h2>
-              <p>Melvin le boss</p>
-            </div>
-            <div>
-              <h2>Price</h2>
-              <p>69.99 €</p>
-            </div>
-          </StyledDescription>
+          ) : null}
+          <h2>Suggestion</h2>
+          <GamesContainer>
+            {listOfGames?.data?.featured_win.map(game => {
+              return (
+                <div key={game.id}>
+                  <GameDisplay
+                    image={game.large_capsule_image}
+                    title={game.name}
+                    price={`${game.final_price} ${game.currency}`}
+                    tag={'test'}
+                    id={game.id}
+                  />
+                  <br />
+                </div>
+              )
+            })}
+          </GamesContainer>
         </ContainerChild>
       </Container>
     </div>
   )
+}
+
+const getDisplay = () => {
+  const display = useSelector(state => state.display.value)
+  return display.width < 1024 ? '5%' : '2%'
 }
 
 const Container = styled.div`
@@ -94,11 +134,18 @@ const StyledTitle = styled.div`
 `
 const TitleGame = styled.h1`
   text-align: center;
+  font-size: 1.5em;
 `
 
 const IconStar = styled(Star)`
   float: right;
-  max-width: 35px;
+  max-width: 25px;
 `
-
+const GamesContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-left: ${getDisplay};
+  margin-top: ${getDisplay};
+`
 export default GameDetails

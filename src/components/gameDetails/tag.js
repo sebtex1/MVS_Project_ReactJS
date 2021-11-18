@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
 
-const DetailTag = () => {
+const DetailTag = props => {
   return (
     <div>
-      <StyledTag>Action</StyledTag> &nbsp;
-      <StyledTag>Course</StyledTag>
+      <StyledTag>{props.tag}</StyledTag> &nbsp;
+      {/* <StyledTag>{props.tag1}</StyledTag> */}
     </div>
   )
 }
