@@ -5,19 +5,24 @@ import allTheActions from '../../actions'
 import styled from 'styled-components'
 import { SunFill } from '@styled-icons/bootstrap/SunFill'
 import { MoonStarsFill } from '@styled-icons/bootstrap/MoonStarsFill'
+import { useTranslation } from 'react-i18next'
 
 const TopNavbar = () => {
   const dispatch = useDispatch()
   const theme = useSelector(state => state.theme.value)
   const history = useHistory()
-  console.log(process.env.REACT_APP_NAME)
+
+  const { t, i18n } = useTranslation()
+  const translate = val => {
+    i18n.changeLanguage(val)
+  }
 
   return (
     <Container>
       <Name>{process.env.REACT_APP_NAME}</Name>
-      <GamePage>Liste des jeux</GamePage>
-      <FavPage>Liste des favoris</FavPage>
-      <Log onClick={() => history.push('/login')}>Connexion</Log>
+      <GamePage>{t('ListOfGames')}</GamePage>
+      <FavPage>{t('ListOfFavoris')}</FavPage>
+      <Log onClick={() => history.push('/login')}>{t('Login')}</Log>
       <ButtonTheme
         onClick={() =>
           dispatch(
@@ -29,7 +34,15 @@ const TopNavbar = () => {
       >
         {theme === 'lightTheme' ? <MoonIcon /> : <SunIcon />}
       </ButtonTheme>
-      <Theme>FR</Theme>
+      {i18n.language === 'en-US' ? (
+        <Theme onClick={() => translate('fr-FR')}>
+          <h3>EN</h3>
+        </Theme>
+      ) : (
+        <Theme onClick={() => translate('en-US')}>
+          <h3>FR</h3>
+        </Theme>
+      )}
     </Container>
   )
 }
@@ -76,7 +89,10 @@ const Log = styled.h3`
   margin-left: 1%;
   color: ${props => props.theme.textColor};
 `
-const Theme = styled.h4`
+const Theme = styled.button`
+  border: none;
+  background: none;
+  color: ${props => props.theme.textColor};
   margin-right: 2%;
 `
 
