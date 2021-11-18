@@ -4,5 +4,14 @@ import * as search from './search'
 import * as searchFavorite from './searchFavorite'
 import * as gamesApi from './gamesApi'
 import * as famousGames from './famousGames'
+import * as tokenApi from './tokenApi'
 
-export default { theme, display, search, searchFavorite, gamesApi, famousGames }
+export default {
+  theme,
+  display,
+  search,
+  searchFavorite,
+  gamesApi,
+  famousGames,
+  tokenApi
+}

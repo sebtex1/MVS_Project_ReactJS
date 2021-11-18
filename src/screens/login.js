@@ -2,102 +2,97 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+
+import { useTranslation } from 'react-i18next'
+
+import { useSelector, useDispatch } from 'react-redux'
 import allTheActions from '../actions'
+
+
+import { ArrowLeft } from '@styled-icons/bootstrap/ArrowLeft'
 
 import Input from '../components/input'
 
 const Login = () => {
   const dispatch = useDispatch()
   const theme = useSelector(state => state.theme.value)
+
+  const tokenAvailable = useSelector(state => state.tokenApi.token)
+  const { t } = useTranslation()
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [isToken, setIsToken] = useState(false);
   const history = useHistory()
 
   const token = localStorage.getItem('token')
 
-  useEffect(() => {}, [username])
+  useEffect(() => { }, [username])
+
 
   useEffect(() => {
-    // const interval = setInterval(() => {
-    //   const token = localStorage.getItem('token')
-    //   console.log('TOKEN', token)
-    //   if (token != null) {
-    //     history.push('/')
-    //   }
-    // }, 1000)
-    // return () => clearInterval(interval)
-  }, [])
-
-  const onSubmit = e => {
-    e.preventDefault()
-    if (username.length < 3) {
-      alert('Please enter big username')
-      return
-    }
-    axios({
-      method: 'POST',
-      url: 'https://easy-login-api.herokuapp.com/users/login',
-      data: {
-        username: username,
-        password: password
+    setInterval(() => {
+      if (token == null) {
+        setIsToken(true)
+        console.log('TOKEN IS AVAILABLE', isToken)
+      } else {
+        console.log('TOKEN IS NOT AVAILABLE', isToken)
+        setIsToken(false)
       }
-    }).then(response => {
-      console.log(response.headers['x-access-token'])
-      localStorage.setItem('token', response.headers['x-access-token'])
-      history.push('/')
-    })
+      console.log(isToken)
+    }, 1000)
+    
+  }, [])
+  
+
+  const submitCallBack = e => {
+    e.preventDefault();
+    dispatch(
+      allTheActions.tokenApi.callApiToken(
+        {
+          username: username,
+          password: password
+        }
+      )
+    )
+    console.log("TOKEN :",tokenAvailable.headers)
+    localStorage.setItem('token', tokenAvailable.headers['x-access-token'])
+    history.push('/')
+
   }
 
   const deleteToken = () => {
     window.localStorage.setItem('token', null)
     window.location.reload(false)
+    this.forceUpdate()
   }
 
   return (
     <StyledContainer>
-      {token != null ? (
+      {isToken ? (
         <StyledLayer>
           <StyledWrapper>
-            <StyledH1>Logout</StyledH1>
-            <StyledButtonTheme
-              onClick={() =>
-                dispatch(
-                  allTheActions.theme.changeTheme(
-                    theme === 'lightTheme' ? 'darkTheme' : 'lightTheme'
-                  )
-                )
-              }
-            >
-              theme
+            <StyledButtonTheme onClick={() => history.push('/')}>
+              <ArrowLeft />
+              <p>Retour</p>
             </StyledButtonTheme>
+            <StyledH1>{t('Login')}</StyledH1>
           </StyledWrapper>
-          <StyledParagraphe>
-            Tu peux ajouter en favoris😫 alors inscris toi 🤗
-          </StyledParagraphe>
+          <StyledParagraphe>{t('SentenceConnexion')}</StyledParagraphe>
           <StyledButtonLogOut onClick={deleteToken}>Partir</StyledButtonLogOut>
         </StyledLayer>
       ) : (
         <StyledLayer>
           <StyledWrapper>
-            <StyledH1>Login</StyledH1>
-            <StyledButtonTheme
-              onClick={() =>
-                dispatch(
-                  allTheActions.theme.changeTheme(
-                    theme === 'lightTheme' ? 'darkTheme' : 'lightTheme'
-                  )
-                )
-              }
-            >
-              theme
+            <StyledButtonTheme onClick={() => history.push('/')}>
+              <ArrowLeft />
+              <p>Retour</p>
             </StyledButtonTheme>
+            <StyledH1>{t('Login')}</StyledH1>
           </StyledWrapper>
-          <StyledParagraphe>
-            Tu peux ajouter en favoris😫 alors inscris toi 🤗
-          </StyledParagraphe>
-          <StyledForm onSubmit={onSubmit}>
+          <StyledParagraphe>{t('SentenceConnexion')}</StyledParagraphe>
+          <StyledForm onSubmit={submitCallBack}>
             <StyledLabel>Mail</StyledLabel>
             <Input
               typeInput='email'
@@ -202,8 +197,10 @@ const StyledButtonLogOut = styled.button`
 `
 
 const StyledButtonTheme = styled.button`
-  width: 30px;
-  height: 30px;
+  width: auto;
+  height: auto;
+  background: none;
+  border: none;
 `
 
 const StyledH1 = styled.h1`

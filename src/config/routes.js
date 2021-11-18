@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import Home from '../screens/home'
 import GameDetails from '../screens/gameDetail'
+import Login from '../screens/login'
 
 const Routes = () => {
   return (
@@ -15,7 +16,7 @@ const Routes = () => {
           <Home />
         </Route>
         <Route exact path='/login'>
-          <Home />
+          <Login />
         </Route>
         <Route exact path='/details'>
           <GameDetails />
