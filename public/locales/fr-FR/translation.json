@@ -6,5 +6,9 @@
   "AllTheGames": "Tous les jeux",
   "FamousGames": "Les jeux du moments",
   "SearchAGame": "Recherchez un jeu",
-  "SentenceConnexion": "Tu peux ajouter en favoris😫 alors inscris toi 🤗"
+  "SentenceConnexion": "Tu peux ajouter en favoris😫 alors inscris toi 🤗",
+  "SentencePopup": "Veuillez vous connecter avec votre adresse mail et votre mot de passe pour pouvoir ajouter un jeu a votre liste de favoris",
+  "TitlePopup": "Ajouter en favoris",
+  "ButonPopupOut": "Non",
+  "ButonPopupIn": "Oui"
 }

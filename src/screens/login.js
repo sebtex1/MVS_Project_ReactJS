@@ -9,10 +9,10 @@ import { useTranslation } from 'react-i18next'
 import { useSelector, useDispatch } from 'react-redux'
 import allTheActions from '../actions'
 
-
 import { ArrowLeft } from '@styled-icons/bootstrap/ArrowLeft'
 
 import Input from '../components/input'
+
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -29,21 +29,6 @@ const Login = () => {
   const token = localStorage.getItem('token')
 
   useEffect(() => { }, [username])
-
-
-  useEffect(() => {
-    setInterval(() => {
-      if (token == null) {
-        setIsToken(true)
-        console.log('TOKEN IS AVAILABLE', isToken)
-      } else {
-        console.log('TOKEN IS NOT AVAILABLE', isToken)
-        setIsToken(false)
-      }
-      console.log(isToken)
-    }, 1000)
-    
-  }, [])
   
 
   const submitCallBack = e => {
@@ -63,14 +48,13 @@ const Login = () => {
   }
 
   const deleteToken = () => {
-    window.localStorage.setItem('token', null)
-    window.location.reload(false)
-    this.forceUpdate()
+    window.localStorage.removeItem('token')
+    history.push('/')
   }
 
   return (
     <StyledContainer>
-      {isToken ? (
+      {token ? (
         <StyledLayer>
           <StyledWrapper>
             <StyledButtonTheme onClick={() => history.push('/')}>
@@ -120,6 +104,7 @@ const Login = () => {
 }
 
 const StyledContainer = styled.div`
+  width: 100%
   height: 100vh;
   padding: 0px 20px;
   @media (min-width: 968px) {
