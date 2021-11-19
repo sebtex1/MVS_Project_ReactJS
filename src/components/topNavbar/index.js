@@ -21,11 +21,15 @@ const TopNavbar = () => {
   return (
     <ContainerTop>
       <Name>{process.env.REACT_APP_NAME}</Name>
-      <GamePage onClick={() => history.push('/')}>{t('ListOfGames')}</GamePage>
-      <FavPage onClick={() => history.push('/favoris')}>
-        {t('ListOfFavoris')}
-      </FavPage>
-      <Log onClick={() => history.push('/login')}>{t('Login')}</Log>
+      <ButtonPages onClick={() => history.push('/')}>
+        <GamePage>{t('ListOfGames')}</GamePage>
+      </ButtonPages>
+      <ButtonPages onClick={() => history.push('/favoris')}>
+        <FavPage>{t('ListOfFavoris')}</FavPage>
+      </ButtonPages>
+      <ButtonPages onClick={() => history.push('/login')}>
+        <Log>{t('Login')}</Log>
+      </ButtonPages>
       <ButtonTheme
         onClick={() =>
           dispatch(
@@ -65,31 +69,29 @@ const ContainerTop = styled.div`
 const Name = styled.h1`
   position: absolute;
   left: 0;
-  margin-left: 5%;
+  margin-left: 2%;
   color: ${props => props.theme.textColor};
 `
-const GamePage = styled.h3`
-  right: 0;
+const ButtonPages = styled.button`
+  border: none;
   text-align: center;
-  font-weight: ${window.location.pathname === '/' ? 'bold' : 'normal'};
+  background: none;
   margin-right: 1%;
   margin-left: 1%;
+`
+const GamePage = styled.h3`
+  text-align: center;
+  font-weight: ${window.location.pathname === '/' ? 'bold' : 'normal'};
   color: ${props => props.theme.textColor};
 `
 const FavPage = styled.h3`
-  right: 0;
   text-align: center;
   font-weight: ${window.location.pathname === '/favoris' ? 'bold' : 'normal'};
-  margin-right: 1%;
-  margin-left: 1%;
   color: ${props => props.theme.textColor};
 `
 const Log = styled.h3`
-  right: 0;
   text-align: center;
   font-weight: normal;
-  margin-right: 1%;
-  margin-left: 1%;
   color: ${props => props.theme.textColor};
 `
 const Theme = styled.button`

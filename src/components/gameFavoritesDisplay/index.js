@@ -6,7 +6,7 @@ import Tag from '../tag'
 import { useHistory } from 'react-router-dom'
 import { DeleteBin } from '@styled-icons/remix-line/DeleteBin'
 
-const GameFavortesDisplay = props => {
+const GameFavoritesDisplay = props => {
   const price = props.price.split(' ')[0]
   const currency = props.price.split(' ')[1]
   const history = useHistory()
@@ -88,4 +88,4 @@ const Price = styled.span`
   color: ${props => props.theme.priceColor};
 `
 
-export default GameFavortesDisplay
+export default GameFavoritesDisplay

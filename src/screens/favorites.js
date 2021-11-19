@@ -2,12 +2,18 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import allTheActions from '../actions'
-import GameFavortesDisplay from '../components/gameFavoritesDisplay'
+import GameFavoritesDisplay from '../components/gameFavoritesDisplay'
 import Navbar from './navbar'
+import Header from '../components/header'
+import { useTranslation } from 'react-i18next'
+import Search from '../components/search'
+import LoaderComp from '../components/loader'
+import ErrorDisplay from '../components/errorDisplay'
 
 const FavoritesList = () => {
   const dispatch = useDispatch()
   const listOfGames = useSelector(state => state.gamesApi.value)
+  const { t } = useTranslation()
 
   useEffect(() => {
     dispatch(
@@ -21,12 +27,19 @@ const FavoritesList = () => {
     <div>
       <Navbar />
       <Container>
-        <h1>Favorites</h1>
+        <Header title={t('Favorites')} />
+        <Search value='search' placeholder={t('SearchAGame')} />
+        {/* feature pour rechercher avec la value search dans le store */}
+        {listOfGames.value === null && listOfGames.isError !== true ? (
+          <LoaderComp />
+        ) : listOfGames.isError === true ? (
+          <ErrorDisplay text='Une erreur est survenue, vérifiez votre connexion ou ressayez plus tard.' />
+        ) : null}
         <GamesContainer>
           {listOfGames?.data?.featured_win.map(game => {
             return (
               <div key={game.id}>
-                <GameFavortesDisplay
+                <GameFavoritesDisplay
                   image={game.large_capsule_image}
                   title={game.name}
                   price={`${game.final_price} ${game.currency}`}
@@ -51,9 +64,9 @@ const getDisplay = () => {
 
 const Container = styled.div`
   display: flex;
+  align-items: left;
+  justify-content: right;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `
 
 const GamesContainer = styled.div`
@@ -63,10 +76,6 @@ const GamesContainer = styled.div`
   justify-content: center;
   margin-left: ${getDisplay};
   margin-top: ${getDisplay};
-`
-const GamesContainerChild = styled.div`
-  display: flex;
-  flex-direction: row;
 `
 
 export default FavoritesList

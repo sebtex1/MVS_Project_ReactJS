@@ -20,6 +20,13 @@ ReactDOM.render(
               width={80}
               timeout={5000}
             />
+            <Loader
+              type='Rings'
+              color='#FFFFFF'
+              height={80}
+              width={80}
+              timeout={5000}
+            />
           </div>
         </div>
       }
