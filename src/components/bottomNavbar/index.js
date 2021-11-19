@@ -7,22 +7,24 @@ import { SearchOutline } from '@styled-icons/evaicons-outline/SearchOutline'
 import { Heart } from '@styled-icons/bootstrap/Heart'
 import { HeartFill } from '@styled-icons/bootstrap/HeartFill'
 import { useTranslation } from 'react-i18next'
+import { useHistory } from 'react-router-dom'
 
 const BottomNavbar = () => {
   const { i18n } = useTranslation()
+  const history = useHistory()
   const translate = val => {
     i18n.changeLanguage(val)
   }
   return (
     <Container>
-      <ButtonIcon onClick={() => console.log()}>
+      <ButtonIcon onClick={() => history.push('/')}>
         {window.location.pathname === '/' ? (
           <SearchOutlineIcon />
         ) : (
           <SearchIcon />
         )}
       </ButtonIcon>
-      <ButtonIcon>
+      <ButtonIcon onClick={() => history.push('/favoris')}>
         {window.location.pathname === '/favoris' ? (
           <HeartFillIcon />
         ) : (
