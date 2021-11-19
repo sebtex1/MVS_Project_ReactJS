@@ -9,16 +9,18 @@ const GameDisplay = props => {
   const price = props.price.split(' ')[0]
   const currency = props.price.split(' ')[1]
   const history = useHistory()
+
+  function handleClick() {
+    props.suggestion === true
+      ? history.replace(`details/${props.id}`)
+      : history.push(`details/${props.id}`)
+  }
+
   return (
     <Container>
-      <Image
-        src={props.image}
-        onClick={() => history.push(`details/${props.id}`)}
-      />
+      <Image src={props.image} onClick={handleClick} />
       <InfosContainer>
-        <Title onClick={() => history.push(`details/${props.id}`)}>
-          {props.title}
-        </Title>
+        <Title onClick={handleClick}>{props.title}</Title>
         <Price>
           {price.length === 1
             ? `0.0${price}`

@@ -45,19 +45,17 @@ const GameDetails = () => {
                 {detailsGame.data?.name} <IconStar />
               </TitleGame>
               <StyledTitle>
-                {detailsGame.data?.genre?.map(item => {
-                  console.log(item)
+                {detailsGame.data?.genres?.map(item => {
                   return (
-                    <div key={item}>
-                      <DetailTag />
+                    <div key={item.id}>
+                      <DetailTag tag={item.description} />
                     </div>
                   )
                 })}
               </StyledTitle>
-
               <h2>{t('DetailDescription')}</h2>
               <p>{detailsGame.data?.short_description}</p>
-              <StyledDescription>
+              <StyledInfo>
                 <div>
                   <h2>{t('DetailDevelopper')}</h2>
                   {detailsGame.data?.developers?.map(item => {
@@ -76,10 +74,10 @@ const GameDetails = () => {
                   <h2>{t('DetailPrice')}</h2>
                   <p>{detailsGame.data?.price_overview?.final_formatted}</p>
                 </div>
-              </StyledDescription>
+              </StyledInfo>
             </div>
           ) : null}
-          <h2>Suggestion</h2>
+          <h2>{t('DetailSuggestion')}</h2>
           <GamesContainer>
             {listOfGames?.data?.featured_win.map(game => {
               return (
@@ -90,6 +88,7 @@ const GameDetails = () => {
                     price={`${game.final_price} ${game.currency}`}
                     tag={'test'}
                     id={game.id}
+                    suggestion={true}
                   />
                   <br />
                 </div>
@@ -117,7 +116,7 @@ const ContainerChild = styled.div`
   justify-content: center;
   align-items: center;
 `
-const StyledDescription = styled.div`
+const StyledInfo = styled.div`
   display: flex;
   flex-direction: row;
   @media (max-width: 600px) {
@@ -129,8 +128,8 @@ const StyledDescription = styled.div`
 
 const StyledTitle = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 `
 const TitleGame = styled.h1`
   text-align: center;
