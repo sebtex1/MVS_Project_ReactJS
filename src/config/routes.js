@@ -7,6 +7,7 @@ import {
 import Home from '../screens/home'
 import GameDetails from '../screens/gameDetail'
 import Login from '../screens/login'
+import FavoritesList from '../screens/favorites'
 
 const Routes = () => {
   return (
@@ -19,9 +20,7 @@ const Routes = () => {
           <Login />
         </Route>
         <Route exact path='/details/:id' component={GameDetails} />
-        <Route exact path='/favoris'>
-          <Home />
-        </Route>
+        <Route exact path='/favoris' component={FavoritesList} />
         {/* <PrivateRoute exact path="/home">
                     <Home />
                 </PrivateRoute> */}
