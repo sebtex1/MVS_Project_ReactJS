@@ -2,8 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import allTheActions from '../actions'
-import GameDisplay from '../components/gameDisplay'
-import { DeleteBin } from '@styled-icons/remix-line/DeleteBin'
+import GameFavortesDisplay from '../components/gameFavoritesDisplay'
 import Navbar from './navbar'
 
 const FavoritesList = () => {
@@ -27,8 +26,7 @@ const FavoritesList = () => {
           {listOfGames?.data?.featured_win.map(game => {
             return (
               <div key={game.id}>
-                <StyledBin />
-                <GameDisplay
+                <GameFavortesDisplay
                   image={game.large_capsule_image}
                   title={game.name}
                   price={`${game.final_price} ${game.currency}`}
@@ -69,11 +67,6 @@ const GamesContainer = styled.div`
 const GamesContainerChild = styled.div`
   display: flex;
   flex-direction: row;
-`
-
-const StyledBin = styled(DeleteBin)`
-  max-width: 50px;
-  color: red;
 `
 
 export default FavoritesList

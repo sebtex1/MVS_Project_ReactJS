@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import DetailVideo from '../components/gameDetails'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
@@ -9,6 +9,7 @@ import GameDisplay from '../components/gameDisplay'
 import DetailTag from '../components/gameDetails/tag'
 import Navbar from './navbar'
 import { useTranslation } from 'react-i18next'
+import FavPopup from '../components/popup'
 
 const GameDetails = () => {
   const dispatch = useDispatch()
@@ -16,6 +17,8 @@ const GameDetails = () => {
   const detailsGame = useSelector(state => state.gameDetails.value)
   const listOfGames = useSelector(state => state.gamesApi.value)
   const { t } = useTranslation()
+  // const [isOpen, setIsOpen] = useState(false)
+  // const token = localStorage.getItem('token')
 
   useEffect(() => {
     if (id !== undefined) {
@@ -33,8 +36,15 @@ const GameDetails = () => {
     }
   }, [id])
 
+  // const showPopup = () => {
+  //   if( token !== null ){
+  //     setIsOpen(true)
+  //   }
+  // }
+
   return (
     <div>
+      {/* {isOpen ? <FavPopup /> : null} */}
       <Navbar />
       <DetailVideo />
       <Container>
