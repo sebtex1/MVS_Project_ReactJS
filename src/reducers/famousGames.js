@@ -1,7 +1,8 @@
 import { GET_FAMOUS_GAMES } from '../actions/famousGames'
 
 const initialState = {
-  value: []
+  value: [],
+  isError: false
 }
 
 export default (state = initialState, action) => {
@@ -9,7 +10,8 @@ export default (state = initialState, action) => {
     case GET_FAMOUS_GAMES:
       return {
         ...state,
-        value: action.value
+        value: action.value,
+        isError: action.isError
       }
     default:
       return state
