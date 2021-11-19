@@ -6,10 +6,14 @@
   "AllTheGames": "All the games",
   "FamousGames": "Famous games",
   "SearchAGame": "Search a game",
+  "SentenceConnexion": "You can add to favorites😫 so sign up 🤗",
+  "SentencePopup": "Please login with your email address and password to add a game to your favorites list",
+  "TitlePopup": "Add to favorites",
+  "ButonPopupOut": "No",
+  "ButonPopupIn": "Yes",
   "DetailDescription": "Description",
   "DetailDevelopper": "Developper",
   "DetailPublished": "Published",
   "DetailPrice": "Price",
-  "DetailSuggestion": "Suggestion",
-  "SentenceConnexion": "You can add to favorites😫 so sign up 🤗"
+  "DetailSuggestion": "Suggestion"
 }
