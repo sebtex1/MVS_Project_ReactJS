@@ -22,7 +22,9 @@ const TopNavbar = () => {
     <ContainerTop>
       <Name>{process.env.REACT_APP_NAME}</Name>
       <GamePage>{t('ListOfGames')}</GamePage>
-      <FavPage>{t('ListOfFavoris')}</FavPage>
+      <FavPage onClick={() => history.push('/favoris')}>
+        {t('ListOfFavoris')}
+      </FavPage>
       <Log onClick={() => history.push('/login')}>{t('Login')}</Log>
       <ButtonTheme
         onClick={() =>
