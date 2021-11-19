@@ -16,7 +16,7 @@ const DetailVideo = () => {
         <ReactPlayer
           url='https://www.youtube.com/watch?v=zw47_q9wbBE'
           width='100%'
-          height='550px'
+          height='500px'
         />
         <ButtonBack onClick={() => history.goBack()}>
           <BackArrow />

@@ -28,7 +28,7 @@ const Pictures = props => {
       {listGames.value === null && listGames.isError !== true ? (
         <LoaderComp />
       ) : listGames.isError === true ? (
-        <ErrorDisplay text='Une erreur est survenue' />
+        <ErrorDisplay text='Une erreur est survenue, vérifiez votre connexion ou ressayez plus tard.' />
       ) : null}
       <Carousel cols={5} rows={1} gap={'20px'}>
         {listGames?.value?.data?.top_sellers?.items?.map(item => {
