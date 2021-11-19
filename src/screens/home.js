@@ -55,6 +55,7 @@ const Home = () => {
                   title={game.name}
                   price={`${game.final_price} ${game.currency}`}
                   tag={'test'}
+                  id={game.id}
                 />
                 <br />
               </div>

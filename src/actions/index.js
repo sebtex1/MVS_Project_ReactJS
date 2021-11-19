@@ -4,6 +4,7 @@ import * as search from './search'
 import * as searchFavorite from './searchFavorite'
 import * as gamesApi from './gamesApi'
 import * as famousGames from './famousGames'
+import * as gameDetails from './gameDetails'
 import * as videoYoutube from './videoYoutube'
 import * as tokenApi from './tokenApi'
 
@@ -14,6 +15,7 @@ export default {
   searchFavorite,
   gamesApi,
   famousGames,
+  gameDetails,
   videoYoutube,
   tokenApi
 }
