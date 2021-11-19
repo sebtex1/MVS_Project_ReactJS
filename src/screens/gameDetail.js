@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import DetailVideo from '../components/gameDetails'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
@@ -9,7 +9,7 @@ import GameDisplay from '../components/gameDisplay'
 import DetailTag from '../components/gameDetails/tag'
 import Navbar from './navbar'
 import { useTranslation } from 'react-i18next'
-import FavPopup from '../components/popup'
+// import FavPopup from '../components/popup'
 
 const GameDetails = () => {
   const dispatch = useDispatch()
