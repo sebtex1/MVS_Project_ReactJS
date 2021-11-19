@@ -18,15 +18,27 @@ Consulter les informations du jeu via la page détail du jeu avec des fonctionn
 ```
 git clone https://github.com/sebtex1/MVS_Project_ReactJS.git
 ```
-## run command
+## Install command
 ```
 npm i
+```
+
+
+## Run Project
+```
+open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 ```
 ```
 npm run start
 ```
+```
+http://localhost:3000/
+```
 
 Enjoy 😊 
+
+# Site
+Game Inside : [site](https://zealous-curran-ede3b0.netlify.app/)
 
 ## Bonus
 - gsap : [link](https://greensock.com/gsap/)
