@@ -38,7 +38,7 @@ const Login = () => {
       })
     )
     console.log('TOKEN :', tokenAvailable.headers)
-    localStorage.setItem('token', tokenAvailable.headers)
+    localStorage.setItem('token', tokenAvailable.headers['x-access-token'])
     history.push('/')
   }
 
@@ -92,7 +92,7 @@ const Login = () => {
               required
               onChangeInput={e => setPassword(e.target.value)}
             />
-            <StyledButton type='submit'>{t('ButtonLogout')}</StyledButton>
+            <StyledButton type='submit'>{t('Login')}</StyledButton>
           </StyledForm>
         </StyledLayer>
       )}
