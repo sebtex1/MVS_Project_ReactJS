@@ -56,10 +56,12 @@ const Login = () => {
               <ArrowLeft />
               <StyledText>Retour</StyledText>
             </StyledButtonTheme>
-            <StyledH1>{t('Login')}</StyledH1>
+            <StyledH1>{t('Logout')}</StyledH1>
           </StyledWrapper>
-          <StyledParagraphe>{t('SentenceConnexion')}</StyledParagraphe>
-          <StyledButtonLogOut onClick={deleteToken}>Partir</StyledButtonLogOut>
+          <StyledParagraphe>{t('TextLogout')}</StyledParagraphe>
+          <StyledButtonLogOut onClick={deleteToken}>
+            {t('ButtonLogout')}
+          </StyledButtonLogOut>
         </StyledLayer>
       ) : (
         <StyledLayer>
@@ -90,7 +92,7 @@ const Login = () => {
               required
               onChangeInput={e => setPassword(e.target.value)}
             />
-            <StyledButton type='submit'>Je m'inscris</StyledButton>
+            <StyledButton type='submit'>{t('ButtonLogout')}</StyledButton>
           </StyledForm>
         </StyledLayer>
       )}

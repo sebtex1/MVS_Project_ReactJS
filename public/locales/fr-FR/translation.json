@@ -6,7 +6,7 @@
   "AllTheGames": "Tous les jeux",
   "FamousGames": "Les jeux du moments",
   "SearchAGame": "Recherchez un jeu",
-  "SentenceConnexion": "Tu peux ajouter en favoris😫 alors inscris toi 🤗",
+  "SentenceConnexion": "Inscris toi pour ajouter les jeux en favoris😬",
   "SentencePopup": "Veuillez vous connecter avec votre adresse mail et votre mot de passe pour pouvoir ajouter un jeu a votre liste de favoris",
   "TitlePopup": "Ajouter en favoris",
   "ButonPopupOut": "Non",
@@ -15,5 +15,9 @@
   "DetailDevelopper": "Développeur",
   "DetailPublished": "Publié",
   "DetailPrice": "Prix",
-  "DetailSuggestion": "Suggestion"
+  "DetailSuggestion": "Suggestion", 
+  "ButtonLogout": "Me déconnecter",
+  "TextLogout": "Oh non part pas😭",
+  "Logout": "Déconnexion"
+
 }
