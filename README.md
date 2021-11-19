@@ -29,7 +29,6 @@ npm run start
 Enjoy 😊 
 
 ## Bonus
-Ajout de l'animation sur les pages 
 - gsap : [link](https://greensock.com/gsap/)
 - Bande son youtube
 
