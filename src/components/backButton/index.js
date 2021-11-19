@@ -17,6 +17,7 @@ const BackButton = () => {
 
 const BackArrow = styled(ArrowBackIos)`
   max-width: 25px;
+  color: ${props => props.theme.textColor};
 `
 
 const ButtonBack = styled.button`
