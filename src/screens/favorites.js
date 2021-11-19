@@ -6,6 +6,9 @@ import GameFavoritesDisplay from '../components/gameFavoritesDisplay'
 import Navbar from './navbar'
 import Header from '../components/header'
 import { useTranslation } from 'react-i18next'
+import Search from '../components/search'
+import LoaderComp from '../components/loader'
+import ErrorDisplay from '../components/errorDisplay'
 
 const FavoritesList = () => {
   const dispatch = useDispatch()
@@ -25,6 +28,13 @@ const FavoritesList = () => {
       <Navbar />
       <Container>
         <Header title={t('Favorites')} />
+        <Search value='search' placeholder={t('SearchAGame')} />
+        {/* feature pour rechercher avec la value search dans le store */}
+        {listOfGames.value === null && listOfGames.isError !== true ? (
+          <LoaderComp />
+        ) : listOfGames.isError === true ? (
+          <ErrorDisplay text='Une erreur est survenue, vérifiez votre connexion ou ressayez plus tard.' />
+        ) : null}
         <GamesContainer>
           {listOfGames?.data?.featured_win.map(game => {
             return (
