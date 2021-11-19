@@ -96,7 +96,7 @@ const Home = () => {
           {filteredList === null
             ? listOfGames?.value?.data?.featured_win.map(game => {
                 return (
-                  <div key={game.id}>
+                  <ContainerGame key={game.id}>
                     <GameDisplay
                       image={game.large_capsule_image}
                       title={game.name}
@@ -104,13 +104,12 @@ const Home = () => {
                       tag={'test'}
                       id={game.id}
                     />
-                    <br />
-                  </div>
+                  </ContainerGame>
                 )
               })
             : filteredList.map(game => {
                 return (
-                  <div key={game.id}>
+                  <ContainerGame key={game.id}>
                     <GameDisplay
                       image={game.large_capsule_image}
                       title={game.name}
@@ -118,8 +117,7 @@ const Home = () => {
                       tag={'test'}
                       id={game.id}
                     />
-                    <br />
-                  </div>
+                  </ContainerGame>
                 )
               })}
         </GamesContainer>
@@ -138,6 +136,10 @@ const Container = styled.div`
   align-items: left;
   justify-content: right;
   flex-direction: column;
+`
+
+const ContainerGame = styled.div`
+  margin-bottom: 10px;
 `
 
 const OverlayAnimation = styled.div`
