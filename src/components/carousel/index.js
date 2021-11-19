@@ -13,7 +13,7 @@ const Pictures = props => {
   // console.log(listGames.data.top_sellers.items)
 
   useEffect(() => {
-    if (listGames.data === null) {
+    if (listGames.data === null || listGames.data === undefined) {
       dispatch(
         allTheActions.famousGames.callFamousGames(
           'https://store.steampowered.com/api/featuredcategories/?cc=EE&amp;l=english&v=1&trailer=1%20HTTP/1.1%22%20%22-%22%20%22Valve/Steam%20HTTP%20Client%201.0%20(tenfoot)'

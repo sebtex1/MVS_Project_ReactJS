@@ -9,15 +9,14 @@ export const getToken = payload => ({
 
 export const callApiToken = params => dispatch => {
   axios({
-      method: 'POST',
-      url: 'https://easy-login-api.herokuapp.com/users/login',
-      data: {
-        username: params.username,
-        password: params.password
-      }
+    method: 'POST',
+    url: 'https://easy-login-api.herokuapp.com/users/login',
+    data: {
+      username: params.username,
+      password: params.password
+    }
   }).then(response => {
-      
     console.log(response.headers['x-access-token'])
     dispatch(getToken(response))
-    })
+  })
 }

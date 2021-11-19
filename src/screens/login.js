@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
+// import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
 import { useTranslation } from 'react-i18next'
@@ -9,27 +9,25 @@ import { useTranslation } from 'react-i18next'
 import { useSelector, useDispatch } from 'react-redux'
 import allTheActions from '../actions'
 
-
 import { ArrowLeft } from '@styled-icons/bootstrap/ArrowLeft'
 
 import Input from '../components/input'
 
 const Login = () => {
   const dispatch = useDispatch()
-  const theme = useSelector(state => state.theme.value)
+  // const theme = useSelector(state => state.theme.value)
 
   const tokenAvailable = useSelector(state => state.tokenApi.token)
   const { t } = useTranslation()
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [isToken, setIsToken] = useState(false);
+  const [isToken, setIsToken] = useState(false)
   const history = useHistory()
 
   const token = localStorage.getItem('token')
 
-  useEffect(() => { }, [username])
-
+  useEffect(() => {}, [username])
 
   useEffect(() => {
     setInterval(() => {
@@ -42,24 +40,19 @@ const Login = () => {
       }
       console.log(isToken)
     }, 1000)
-    
   }, [])
-  
 
   const submitCallBack = e => {
-    e.preventDefault();
+    e.preventDefault()
     dispatch(
-      allTheActions.tokenApi.callApiToken(
-        {
-          username: username,
-          password: password
-        }
-      )
+      allTheActions.tokenApi.callApiToken({
+        username: username,
+        password: password
+      })
     )
-    console.log("TOKEN :",tokenAvailable.headers)
+    console.log('TOKEN :', tokenAvailable.headers)
     localStorage.setItem('token', tokenAvailable.headers['x-access-token'])
     history.push('/')
-
   }
 
   const deleteToken = () => {

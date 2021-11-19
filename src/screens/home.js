@@ -18,7 +18,7 @@ const Home = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (listOfGames.data === null) {
+    if (listOfGames.data === undefined || listOfGames.data === null) {
       dispatch(
         allTheActions.gamesApi.callApiGames(
           'https://store.steampowered.com/api/featured/'
