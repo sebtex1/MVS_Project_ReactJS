@@ -64,7 +64,7 @@ const Home = () => {
         {listOfGames.value === null && listOfGames.isError !== true ? (
           <LoaderComp />
         ) : listOfGames.isError === true ? (
-          <ErrorDisplay text='Une erreur est survenue' />
+          <ErrorDisplay text='Une erreur est survenue, vérifiez votre connexion ou ressayez plus tard.' />
         ) : null}
         <GamesContainer>
           {filteredList === null

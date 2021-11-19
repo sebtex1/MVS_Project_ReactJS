@@ -16,9 +16,23 @@ const GameDetails = () => {
   const { id } = useParams()
   const detailsGame = useSelector(state => state.gameDetails.value)
   const listOfGames = useSelector(state => state.gamesApi.value)
+  const videoYoutube = useSelector(state => state.videoYoutube.value)
   const { t } = useTranslation()
   // const [isOpen, setIsOpen] = useState(false)
   // const token = localStorage.getItem('token')
+
+  useEffect(() => {
+    dispatch(
+      allTheActions.videoYoutube.callVideoYoutube({
+        query: 'Zelda BOTW',
+        kind: 'TRAILER'
+      })
+    )
+  }, [])
+
+  useEffect(() => {
+    console.log('video', videoYoutube)
+  }, [videoYoutube])
 
   useEffect(() => {
     if (id !== undefined) {

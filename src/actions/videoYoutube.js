@@ -10,7 +10,7 @@ export const getVideoYoutube = payload => ({
   isError: payload.error
 })
 
-export const callVideoYotube = payload => dispatch => {
+export const callVideoYoutube = payload => dispatch => {
   const queryComputed = payload.query.replace(' ', '+')
   axios
     .get(

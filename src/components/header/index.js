@@ -66,7 +66,7 @@ const StyledDot = styled.div`
   border: 1px solid #ffffff;
   position: absolute;
   right: 12px;
-  border-radius: 50%
+  border-radius: 50%;
 `
 
 const Name = styled.h1`

@@ -22,7 +22,7 @@ const Login = () => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [isToken, setIsToken] = useState(false)
+  // const [isToken, setIsToken] = useState(false)
   const history = useHistory()
 
   const token = localStorage.getItem('token')
