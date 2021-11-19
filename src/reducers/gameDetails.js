@@ -1,17 +1,15 @@
-import { GET_GAMES } from '../actions/gamesApi'
+import { GET_DETAILS_GAME } from '../actions/gameDetails'
 
 const initialState = {
-  value: [],
-  isError: false
+  value: {}
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_GAMES:
+    case GET_DETAILS_GAME:
       return {
         ...state,
-        value: action.value,
-        isError: action.isError
+        value: action.value
       }
     default:
       return state

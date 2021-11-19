@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
+import devices from '../../config/devices'
 import { Search } from '@styled-icons/feather/Search'
 import { SearchOutline } from '@styled-icons/evaicons-outline/SearchOutline'
 import { Heart } from '@styled-icons/bootstrap/Heart'
@@ -50,6 +51,12 @@ const Container = styled.div`
   z-index: 1;
   width: 100%;
   background-color: ${props => props.theme.navbarColor};
+  @media ${devices.tablet} {
+    display: none;
+  }
+  @media ${devices.laptop} {
+    display: none;
+  }
 `
 
 const ButtonIcon = styled.button`

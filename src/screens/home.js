@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import allTheActions from '../actions'
 import Header from '../components/header'
 import Navbar from './navbar'
@@ -8,20 +9,43 @@ import Pictures from '../components/carousel'
 import Tag from '../components/tag'
 import Search from '../components/search'
 import GameDisplay from '../components/gameDisplay'
-import { useTranslation } from 'react-i18next'
+import LoaderComp from '../components/loader'
+import ErrorDisplay from '../components/errorDisplay'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const listOfGames = useSelector(state => state.gamesApi.value)
+  const listOfGames = useSelector(state => state.gamesApi)
+  const search = useSelector(state => state.search.value)
+  const [filteredList, setFilteredList] = useState(null)
   const { t } = useTranslation()
 
   useEffect(() => {
-    dispatch(
-      allTheActions.gamesApi.callApiGames(
-        'https://store.steampowered.com/api/featured/'
+    if (listOfGames.data === undefined || listOfGames.data === null) {
+      dispatch(
+        allTheActions.gamesApi.callApiGames(
+          'https://store.steampowered.com/api/featured/'
+        )
       )
-    )
+    }
   }, [])
+
+  useEffect(() => {
+    if (
+      (listOfGames.data !== undefined || listOfGames.data !== null) &&
+      search !== ''
+    ) {
+      setFilteredList(
+        listOfGames.value.data.featured_win.filter(x =>
+          x.name.toLowerCase().includes(search.toLowerCase())
+        )
+      )
+    } else if (
+      (listOfGames.data !== undefined || listOfGames.data !== null) &&
+      search === ''
+    ) {
+      setFilteredList(null)
+    }
+  }, [search])
 
   return (
     <div>
@@ -37,20 +61,41 @@ const Home = () => {
         </TagsContainer>
         <Search value='search' placeholder={t('SearchAGame')} />
         {/* feature pour rechercher avec la value search dans le store */}
+        {listOfGames.value === null && listOfGames.isError !== true ? (
+          <LoaderComp />
+        ) : listOfGames.isError === true ? (
+          <ErrorDisplay text='Une erreur est survenue' />
+        ) : null}
         <GamesContainer>
-          {listOfGames?.data?.featured_win.map(game => {
-            return (
-              <div key={game.id}>
-                <GameDisplay
-                  image={game.large_capsule_image}
-                  title={game.name}
-                  price={`${game.final_price} ${game.currency}`}
-                  tag={'test'}
-                />
-                <br />
-              </div>
-            )
-          })}
+          {filteredList === null
+            ? listOfGames?.value?.data?.featured_win.map(game => {
+                return (
+                  <div key={game.id}>
+                    <GameDisplay
+                      image={game.large_capsule_image}
+                      title={game.name}
+                      price={`${game.final_price} ${game.currency}`}
+                      tag={'test'}
+                      id={game.id}
+                    />
+                    <br />
+                  </div>
+                )
+              })
+            : filteredList.map(game => {
+                return (
+                  <div key={game.id}>
+                    <GameDisplay
+                      image={game.large_capsule_image}
+                      title={game.name}
+                      price={`${game.final_price} ${game.currency}`}
+                      tag={'test'}
+                      id={game.id}
+                    />
+                    <br />
+                  </div>
+                )
+              })}
         </GamesContainer>
       </Container>
     </div>

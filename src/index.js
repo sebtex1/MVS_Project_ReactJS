@@ -5,10 +5,25 @@ import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
 import './i18next'
+import Loader from 'react-loader-spinner'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className='LoaderDivWidth'>
+          <div className='LoaderDivHeight'>
+            <Loader
+              type='Rings'
+              color='#272626'
+              height={80}
+              width={80}
+              timeout={5000}
+            />
+          </div>
+        </div>
+      }
+    >
       <App />
     </Suspense>
   </React.StrictMode>,

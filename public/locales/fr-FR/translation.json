@@ -10,5 +10,10 @@
   "SentencePopup": "Veuillez vous connecter avec votre adresse mail et votre mot de passe pour pouvoir ajouter un jeu a votre liste de favoris",
   "TitlePopup": "Ajouter en favoris",
   "ButonPopupOut": "Non",
-  "ButonPopupIn": "Oui"
+  "ButonPopupIn": "Oui",
+  "DetailDescription": "Description",
+  "DetailDevelopper": "Développeur",
+  "DetailPublished": "Publié",
+  "DetailPrice": "Prix",
+  "DetailSuggestion": "Suggestion"
 }
