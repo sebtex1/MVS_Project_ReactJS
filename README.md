@@ -31,9 +31,7 @@ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args
 ```
 npm run start
 ```
-```
-http://localhost:3000/
-```
+[http://localhost:3000/](http://localhost:3000/)
 
 Enjoy 😊 
 
@@ -42,6 +40,6 @@ Game Inside : [site](https://zealous-curran-ede3b0.netlify.app/)
 
 ## Bonus
 - gsap : [link](https://greensock.com/gsap/)
-- Bande son youtube
+- Video youtube / sound (Page details)
 
 
