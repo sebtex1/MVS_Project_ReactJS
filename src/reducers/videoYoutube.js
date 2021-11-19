@@ -1,4 +1,4 @@
-import { GET_GAMES } from '../actions/gamesApi'
+import { GET_VIDEO_YT } from '../actions/videoYoutube'
 
 const initialState = {
   value: [],
@@ -7,7 +7,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_GAMES:
+    case GET_VIDEO_YT:
       return {
         ...state,
         value: action.value,

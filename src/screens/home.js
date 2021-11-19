@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import allTheActions from '../actions'
 import Header from '../components/header'
 import Navbar from './navbar'
@@ -8,19 +9,22 @@ import Pictures from '../components/carousel'
 import Tag from '../components/tag'
 import Search from '../components/search'
 import GameDisplay from '../components/gameDisplay'
-import { useTranslation } from 'react-i18next'
+import LoaderComp from '../components/loader'
+import ErrorDisplay from '../components/errorDisplay'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const listOfGames = useSelector(state => state.gamesApi.value)
+  const listOfGames = useSelector(state => state.gamesApi)
   const { t } = useTranslation()
 
   useEffect(() => {
-    dispatch(
-      allTheActions.gamesApi.callApiGames(
-        'https://store.steampowered.com/api/featured/'
+    if (listOfGames.data === null) {
+      dispatch(
+        allTheActions.gamesApi.callApiGames(
+          'https://store.steampowered.com/api/featured/'
+        )
       )
-    )
+    }
   }, [])
 
   return (
@@ -37,8 +41,13 @@ const Home = () => {
         </TagsContainer>
         <Search value='search' placeholder={t('SearchAGame')} />
         {/* feature pour rechercher avec la value search dans le store */}
+        {listOfGames.value === null && listOfGames.isError !== true ? (
+          <LoaderComp />
+        ) : listOfGames.isError === true ? (
+          <ErrorDisplay text='Une erreur est survenue' />
+        ) : null}
         <GamesContainer>
-          {listOfGames?.data?.featured_win.map(game => {
+          {listOfGames?.value?.data?.featured_win.map(game => {
             return (
               <div key={game.id}>
                 <GameDisplay

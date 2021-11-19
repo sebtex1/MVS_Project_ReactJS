@@ -7,6 +7,8 @@ import searchFavorite from './searchFavorite'
 import gamesApi from './gamesApi'
 import famousGames from './famousGames'
 import gameDetails from './gameDetails'
+import videoYoutube from './videoYoutube'
+import tokenApi from './tokenApi'
 
 export default combineReducers({
   theme,
@@ -15,5 +17,7 @@ export default combineReducers({
   searchFavorite,
   gamesApi,
   famousGames,
-  gameDetails
+  gameDetails,
+  videoYoutube,
+  tokenApi
 })

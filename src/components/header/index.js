@@ -56,7 +56,7 @@ const Container = styled.div`
 const Name = styled.h1`
   position: absolute;
   left: 0;
-  margin-left: 2%;
+  margin-left: ${getDisplay};
   color: ${props => props.theme.textColor};
 `
 const Button = styled.button`

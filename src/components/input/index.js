@@ -26,7 +26,7 @@ const StyledInput = styled.input`
   background: #f0f1f1;
   border-radius: 8px;
   padding-left: 6px;
-  border: 4px solid;
+  border: 2px solid;
   @media (min-width: 968px) {
     width: 524px;
   }

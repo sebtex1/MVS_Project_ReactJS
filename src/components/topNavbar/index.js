@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import allTheActions from '../../actions'
 import styled from 'styled-components'
+import devices from '../../config/devices'
 import { SunFill } from '@styled-icons/bootstrap/SunFill'
 import { MoonStarsFill } from '@styled-icons/bootstrap/MoonStarsFill'
 import { useTranslation } from 'react-i18next'
@@ -18,7 +19,7 @@ const TopNavbar = () => {
   }
 
   return (
-    <Container>
+    <ContainerTop>
       <Name>{process.env.REACT_APP_NAME}</Name>
       <GamePage>{t('ListOfGames')}</GamePage>
       <FavPage>{t('ListOfFavoris')}</FavPage>
@@ -43,16 +44,19 @@ const TopNavbar = () => {
           <h3>FR</h3>
         </Theme>
       )}
-    </Container>
+    </ContainerTop>
   )
 }
 
-const Container = styled.div`
-  display: flex;
+const ContainerTop = styled.div`
+  display: none;
   justify-content: right;
   align-items: center;
   top: 0;
   background: ${props => props.theme.navbarColor};
+  @media ${devices.mobile} {
+    display: flex;
+  }
 `
 
 // tags texts
