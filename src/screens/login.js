@@ -13,7 +13,6 @@ import { ArrowLeft } from '@styled-icons/bootstrap/ArrowLeft'
 
 import Input from '../components/input'
 
-
 const Login = () => {
   const dispatch = useDispatch()
   // const theme = useSelector(state => state.theme.value)
@@ -28,8 +27,7 @@ const Login = () => {
 
   const token = localStorage.getItem('token')
 
-  useEffect(() => { }, [username])
-
+  useEffect(() => {}, [username])
 
   const submitCallBack = e => {
     e.preventDefault()
@@ -40,7 +38,7 @@ const Login = () => {
       })
     )
     console.log('TOKEN :', tokenAvailable.headers)
-    localStorage.setItem('token', tokenAvailable.headers['x-access-token'])
+    localStorage.setItem('token', tokenAvailable.headers)
     history.push('/')
   }
 
@@ -147,8 +145,8 @@ const StyledLabel = styled.p`
 `
 
 const StyledText = styled.p`
-  opacity: 0
-`;
+  opacity: 0;
+`
 
 const StyledButton = styled.button`
   width: 100%;
