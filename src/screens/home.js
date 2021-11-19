@@ -17,6 +17,8 @@ import { gsap } from 'gsap'
 const Home = () => {
   const dispatch = useDispatch()
   const listOfGames = useSelector(state => state.gamesApi)
+
+  console.log(listOfGames)
   const search = useSelector(state => state.search.value)
   const [filteredList, setFilteredList] = useState(null)
   const { t } = useTranslation()
