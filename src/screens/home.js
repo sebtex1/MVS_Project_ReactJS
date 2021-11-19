@@ -12,7 +12,7 @@ import GameDisplay from '../components/gameDisplay'
 import LoaderComp from '../components/loader'
 import ErrorDisplay from '../components/errorDisplay'
 
-import { gsap } from 'gsap';
+import { gsap } from 'gsap'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -22,8 +22,9 @@ const Home = () => {
   const { t } = useTranslation()
 
   const boxRef = useRef()
-  const layerTop = useRef();
-  const layerBottom = useRef();
+  const layerTop = useRef()
+  const layerBottom = useRef()
+  const layer = useRef()
 
   useEffect(() => {
     if (listOfGames.data === undefined || listOfGames.data === null) {
@@ -44,6 +45,7 @@ const Home = () => {
     )
     gsap.to(layerTop.current, 2, { y: '-100em', opacity: 0, delay: 1.5 })
     gsap.to(layerBottom.current, 2, { y: '100em', opacity: 0, delay: 1.5 })
+    gsap.to(layer.current, 1, { display: 'none', delay: 1.5 })
   }, [])
 
   useEffect(() => {
@@ -66,7 +68,7 @@ const Home = () => {
 
   return (
     <div>
-      <OverlayAnimation>
+      <OverlayAnimation ref={layer}>
         <OverlayWrapperTop ref={layerTop}></OverlayWrapperTop>
         <OverlayText ref={boxRef}>GAME INSIDE</OverlayText>
         <OverlayWrapperBottom ref={layerBottom}></OverlayWrapperBottom>
@@ -141,7 +143,7 @@ const OverlayAnimation = styled.div`
   height: 100%;
   position: absolute;
   z-index: 99;
-`;
+`
 
 const OverlayText = styled.div`
   position: absolute;
