@@ -29,19 +29,6 @@ const Login = () => {
 
   useEffect(() => {}, [username])
 
-  useEffect(() => {
-    setInterval(() => {
-      if (token == null) {
-        setIsToken(true)
-        console.log('TOKEN IS AVAILABLE', isToken)
-      } else {
-        console.log('TOKEN IS NOT AVAILABLE', isToken)
-        setIsToken(false)
-      }
-      console.log(isToken)
-    }, 1000)
-  }, [])
-
   const submitCallBack = e => {
     e.preventDefault()
     dispatch(
@@ -51,24 +38,23 @@ const Login = () => {
       })
     )
     console.log('TOKEN :', tokenAvailable.headers)
-    localStorage.setItem('token', tokenAvailable.headers['x-access-token'])
+    localStorage.setItem('token', tokenAvailable.headers)
     history.push('/')
   }
 
   const deleteToken = () => {
-    window.localStorage.setItem('token', null)
-    window.location.reload(false)
-    this.forceUpdate()
+    window.localStorage.removeItem('token')
+    history.push('/')
   }
 
   return (
     <StyledContainer>
-      {isToken ? (
+      {token ? (
         <StyledLayer>
           <StyledWrapper>
             <StyledButtonTheme onClick={() => history.push('/')}>
               <ArrowLeft />
-              <p>Retour</p>
+              <StyledText>Retour</StyledText>
             </StyledButtonTheme>
             <StyledH1>{t('Login')}</StyledH1>
           </StyledWrapper>
@@ -80,7 +66,7 @@ const Login = () => {
           <StyledWrapper>
             <StyledButtonTheme onClick={() => history.push('/')}>
               <ArrowLeft />
-              <p>Retour</p>
+              <StyledText>Retour</StyledText>
             </StyledButtonTheme>
             <StyledH1>{t('Login')}</StyledH1>
           </StyledWrapper>
@@ -113,6 +99,7 @@ const Login = () => {
 }
 
 const StyledContainer = styled.div`
+  width: 100%
   height: 100vh;
   padding: 0px 20px;
   @media (min-width: 968px) {
@@ -157,6 +144,10 @@ const StyledLabel = styled.p`
   }
 `
 
+const StyledText = styled.p`
+  opacity: 0;
+`
+
 const StyledButton = styled.button`
   width: 100%;
   height: 64px;
@@ -194,6 +185,7 @@ const StyledButtonTheme = styled.button`
   height: auto;
   background: none;
   border: none;
+  cursor: pointer;
 `
 
 const StyledH1 = styled.h1`

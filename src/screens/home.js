@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -15,6 +15,8 @@ import ErrorDisplay from '../components/errorDisplay'
 const Home = () => {
   const dispatch = useDispatch()
   const listOfGames = useSelector(state => state.gamesApi)
+  const search = useSelector(state => state.search.value)
+  const [filteredList, setFilteredList] = useState(null)
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -26,6 +28,24 @@ const Home = () => {
       )
     }
   }, [])
+
+  useEffect(() => {
+    if (
+      (listOfGames.data !== undefined || listOfGames.data !== null) &&
+      search !== ''
+    ) {
+      setFilteredList(
+        listOfGames.value.data.featured_win.filter(x =>
+          x.name.toLowerCase().includes(search.toLowerCase())
+        )
+      )
+    } else if (
+      (listOfGames.data !== undefined || listOfGames.data !== null) &&
+      search === ''
+    ) {
+      setFilteredList(null)
+    }
+  }, [search])
 
   return (
     <div>
@@ -47,20 +67,35 @@ const Home = () => {
           <ErrorDisplay text='Une erreur est survenue' />
         ) : null}
         <GamesContainer>
-          {listOfGames?.value?.data?.featured_win.map(game => {
-            return (
-              <div key={game.id}>
-                <GameDisplay
-                  image={game.large_capsule_image}
-                  title={game.name}
-                  price={`${game.final_price} ${game.currency}`}
-                  tag={'test'}
-                  id={game.id}
-                />
-                <br />
-              </div>
-            )
-          })}
+          {filteredList === null
+            ? listOfGames?.value?.data?.featured_win.map(game => {
+                return (
+                  <div key={game.id}>
+                    <GameDisplay
+                      image={game.large_capsule_image}
+                      title={game.name}
+                      price={`${game.final_price} ${game.currency}`}
+                      tag={'test'}
+                      id={game.id}
+                    />
+                    <br />
+                  </div>
+                )
+              })
+            : filteredList.map(game => {
+                return (
+                  <div key={game.id}>
+                    <GameDisplay
+                      image={game.large_capsule_image}
+                      title={game.name}
+                      price={`${game.final_price} ${game.currency}`}
+                      tag={'test'}
+                      id={game.id}
+                    />
+                    <br />
+                  </div>
+                )
+              })}
         </GamesContainer>
       </Container>
     </div>

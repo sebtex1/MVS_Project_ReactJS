@@ -14,7 +14,7 @@ export const callVideoYotube = payload => dispatch => {
   const queryComputed = payload.query.replace(' ', '+')
   axios
     .get(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${queryComputed}+${payload.kind}&key=AlzaSyc9sfmtzu7w2RVqO80yjZrKGcBNflVRyds`
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${queryComputed}+${payload.kind}&key=AIzaSyC9sfmtzu7w2RVqO80yjZrKGcBNfIVRyds`
     )
     .then(response => {
       dispatch(getVideoYoutube({ data: response, error: false }))

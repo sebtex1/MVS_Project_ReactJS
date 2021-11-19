@@ -21,7 +21,7 @@ const TopNavbar = () => {
   return (
     <ContainerTop>
       <Name>{process.env.REACT_APP_NAME}</Name>
-      <GamePage>{t('ListOfGames')}</GamePage>
+      <GamePage onClick={() => history.push('/')}>{t('ListOfGames')}</GamePage>
       <FavPage onClick={() => history.push('/favoris')}>
         {t('ListOfFavoris')}
       </FavPage>
@@ -71,10 +71,7 @@ const Name = styled.h1`
 const GamePage = styled.h3`
   right: 0;
   text-align: center;
-  font-weight: ${window.location.pathname === '/' /*||
-  window.location.pathname === '/details' */
-    ? 'bold'
-    : 'normal'};
+  font-weight: ${window.location.pathname === '/' ? 'bold' : 'normal'};
   margin-right: 1%;
   margin-left: 1%;
   color: ${props => props.theme.textColor};
