@@ -13,6 +13,9 @@ const Header = props => {
   const theme = useSelector(state => state.theme.value)
   const display = useSelector(state => state.display.value)
   const history = useHistory()
+
+  const token = localStorage.getItem('token')
+
   return (
     <Container>
       <Name>{props.title}</Name>
@@ -31,6 +34,9 @@ const Header = props => {
           </Button>
           {window.location.pathname !== '/login' ? (
             <Button>
+              <StyledDot
+                style={{ background: token != null ? 'green' : 'red' }}
+              ></StyledDot>
               <PersonIcon onClick={() => history.push('/login')} />
             </Button>
           ) : null}
@@ -53,6 +59,16 @@ const Container = styled.div`
   margin-bottom: ${getDisplay};
 `
 
+const StyledDot = styled.div`
+  width: 8px;
+  height: 8px;
+  background: #24a219;
+  border: 1px solid #ffffff;
+  position: absolute;
+  right: 12px;
+  border-radius: 50%
+`
+
 const Name = styled.h1`
   position: absolute;
   left: 0;
@@ -64,6 +80,7 @@ const Button = styled.button`
   background: none;
   color: ${props => props.theme.themeBtnColor};
   border: none;
+  position: relative;
 `
 // Icons
 const MoonIcon = styled(MoonStarsFill)`
