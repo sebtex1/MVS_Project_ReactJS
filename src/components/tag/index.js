@@ -28,6 +28,7 @@ const Text = styled.span`
 
 const Number = styled.span`
   color: ${props => props.theme.textColor};
+  font-weight: bold;
 `
 
 export default Tag
