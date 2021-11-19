@@ -65,7 +65,7 @@ const Login = () => {
         <StyledLayer>
           <StyledWrapper>
             <StyledButtonTheme onClick={() => history.push('/')}>
-              <ArrowLeft />
+              <Arrow />
               <StyledText>Retour</StyledText>
             </StyledButtonTheme>
             <StyledH1>{t('Login')}</StyledH1>
@@ -108,6 +108,9 @@ const StyledContainer = styled.div`
   @media (min-width: 1500px) {
     padding: 0px 20px;
   }
+`
+const Arrow = styled(ArrowLeft)`
+  color: ${props => props.theme.textColor};
 `
 
 const StyledLayer = styled.div`
