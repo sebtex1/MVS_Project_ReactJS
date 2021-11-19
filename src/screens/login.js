@@ -59,7 +59,7 @@ const Login = () => {
           <StyledWrapper>
             <StyledButtonTheme onClick={() => history.push('/')}>
               <ArrowLeft />
-              <p>Retour</p>
+              <StyledText>Retour</StyledText>
             </StyledButtonTheme>
             <StyledH1>{t('Login')}</StyledH1>
           </StyledWrapper>
@@ -71,7 +71,7 @@ const Login = () => {
           <StyledWrapper>
             <StyledButtonTheme onClick={() => history.push('/')}>
               <ArrowLeft />
-              <p>Retour</p>
+              <StyledText>Retour</StyledText>
             </StyledButtonTheme>
             <StyledH1>{t('Login')}</StyledH1>
           </StyledWrapper>
@@ -149,6 +149,10 @@ const StyledLabel = styled.p`
   }
 `
 
+const StyledText = styled.p`
+  opacity: 0
+`;
+
 const StyledButton = styled.button`
   width: 100%;
   height: 64px;
@@ -186,6 +190,7 @@ const StyledButtonTheme = styled.button`
   height: auto;
   background: none;
   border: none;
+  cursor: pointer;
 `
 
 const StyledH1 = styled.h1`
