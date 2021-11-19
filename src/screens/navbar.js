@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import TopNavbar from '../components/topNavbar'
 import BottomNavbar from '../components/bottomNavbar'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import allTheActions from '../actions'
 
 const Navbar = () => {
   const dispatch = useDispatch()
-  const display = useSelector(state => state.display.value)
+  // const display = useSelector(state => state.display.value)
 
   function changeWindowSize() {
     dispatch(
@@ -24,7 +24,12 @@ const Navbar = () => {
     }
   }, [])
 
-  return <div>{display.width < 768 ? <BottomNavbar /> : <TopNavbar />}</div>
+  return (
+    <div>
+      <BottomNavbar />
+      <TopNavbar />
+    </div>
+  )
 }
 
 export default Navbar
