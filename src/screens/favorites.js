@@ -28,7 +28,7 @@ const FavoritesList = () => {
       <Navbar />
       <Container>
         <Header title={t('Favorites')} />
-        <Search value='search' placeholder={t('SearchAGame')} />
+        <Search value='searchFavorite' placeholder={t('SearchAGame')} />
         {/* feature pour rechercher avec la value search dans le store */}
         {listOfGames.value === null && listOfGames.isError !== true ? (
           <LoaderComp />
