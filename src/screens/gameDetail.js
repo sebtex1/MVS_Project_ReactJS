@@ -14,8 +14,11 @@ import { useTranslation } from 'react-i18next'
 const GameDetails = () => {
   const dispatch = useDispatch()
   const { id } = useParams()
-  const detailsGame = useSelector(state => state.gameDetails.value)
+  const detailsGame = useSelector(
+    state => state.gamesApi.value.filter(x => x.id.toString() === id)[0]
+  )
 
+  // console.log('id', id)
   console.log(detailsGame)
   const listOfGames = useSelector(state => state.gamesApi.value)
   const videoYoutube = useSelector(state => state.videoYoutube.value)
@@ -36,21 +39,21 @@ const GameDetails = () => {
     console.log('video', videoYoutube)
   }, [videoYoutube])
 
-  useEffect(() => {
-    if (id !== undefined) {
-      dispatch(
-        allTheActions.gameDetails.callDetailsGame({
-          url: 'https://store.steampowered.com/api/appdetails?appids=',
-          id: id
-        })
-      )
-      dispatch(
-        allTheActions.gamesApi.callApiGames(
-          'https://store.steampowered.com/api/featured/'
-        )
-      )
-    }
-  }, [id])
+  // useEffect(() => {
+  //   if (id !== undefined) {
+  //     dispatch(
+  //       allTheActions.gameDetails.callDetailsGame({
+  //         url: 'https://store.steampowered.com/api/appdetails?appids=',
+  //         id: id
+  //       })
+  //     )
+  //     dispatch(
+  //       allTheActions.gamesApi.callApiGames(
+  //         'https://store.steampowered.com/api/featured/'
+  //       )
+  //     )
+  //   }
+  // }, [id])
 
   // const showPopup = () => {
   //   if( token !== null ){
@@ -65,13 +68,13 @@ const GameDetails = () => {
       <DetailVideo />
       <Container>
         <ContainerChild>
-          {detailsGame?.data ? (
+          {detailsGame ? (
             <div>
               <TitleGame>
-                {detailsGame.data?.name} <IconStar />
+                {detailsGame.name} <IconStar />
               </TitleGame>
               <StyledTitle>
-                {detailsGame.data?.genres?.map(item => {
+                {detailsGame.genres?.map(item => {
                   return (
                     <div key={item.id}>
                       <DetailTag tag={item.description} />
@@ -80,11 +83,11 @@ const GameDetails = () => {
                 })}
               </StyledTitle>
               <h2>{t('DetailDescription')}</h2>
-              <p>{detailsGame.data?.short_description}</p>
+              <p>{detailsGame.short_description}</p>
               <StyledInfo>
                 <div>
                   <h2>{t('DetailDevelopper')}</h2>
-                  {detailsGame.data?.developers?.map(item => {
+                  {detailsGame.developers?.map(item => {
                     return (
                       <div key={item}>
                         <p>{item}</p>
@@ -94,18 +97,18 @@ const GameDetails = () => {
                 </div>
                 <div>
                   <h2>{t('DetailPublished')}</h2>
-                  <p>{detailsGame.data?.publishers}</p>
+                  <p>{detailsGame.publishers}</p>
                 </div>
                 <div>
                   <h2>{t('DetailPrice')}</h2>
-                  <p>{detailsGame.data?.price_overview?.final_formatted}</p>
+                  <p>{detailsGame.price_final_formatted}</p>
                 </div>
               </StyledInfo>
             </div>
           ) : null}
           <h2>{t('DetailSuggestion')}</h2>
           <GamesContainer>
-            {listOfGames?.data?.featured_win.map(game => {
+            {listOfGames.map(game => {
               return (
                 <div key={game.id}>
                   <GameDisplay

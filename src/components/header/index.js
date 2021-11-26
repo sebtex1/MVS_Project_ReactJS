@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import allTheActions from '../../actions'
 import styled from 'styled-components'
+import devices from '../../config/devices'
 import { SunFill } from '@styled-icons/bootstrap/SunFill'
 import { MoonStarsFill } from '@styled-icons/bootstrap/MoonStarsFill'
 import { PersonFill } from '@styled-icons/bootstrap/PersonFill'
@@ -11,7 +12,6 @@ import { PersonFill } from '@styled-icons/bootstrap/PersonFill'
 const Header = props => {
   const dispatch = useDispatch()
   const theme = useSelector(state => state.theme.value)
-  const display = useSelector(state => state.display.value)
   const history = useHistory()
 
   const token = localStorage.getItem('token')
@@ -19,29 +19,27 @@ const Header = props => {
   return (
     <Container>
       <Name>{props.title}</Name>
-      {display.width < 768 ? (
-        <div>
-          <Button
-            onClick={() =>
-              dispatch(
-                allTheActions.theme.changeTheme(
-                  theme === 'lightTheme' ? 'darkTheme' : 'lightTheme'
-                )
+      <DivNav>
+        <Button
+          onClick={() =>
+            dispatch(
+              allTheActions.theme.changeTheme(
+                theme === 'lightTheme' ? 'darkTheme' : 'lightTheme'
               )
-            }
-          >
-            {theme === 'lightTheme' ? <MoonIcon /> : <SunIcon />}
+            )
+          }
+        >
+          {theme === 'lightTheme' ? <MoonIcon /> : <SunIcon />}
+        </Button>
+        {window.location.pathname !== '/login' ? (
+          <Button>
+            <StyledDot
+              style={{ background: token != null ? 'green' : 'red' }}
+            ></StyledDot>
+            <PersonIcon onClick={() => history.push('/login')} />
           </Button>
-          {window.location.pathname !== '/login' ? (
-            <Button>
-              <StyledDot
-                style={{ background: token != null ? 'green' : 'red' }}
-              ></StyledDot>
-              <PersonIcon onClick={() => history.push('/login')} />
-            </Button>
-          ) : null}
-        </div>
-      ) : null}
+        ) : null}
+      </DivNav>
     </Container>
   )
 }
@@ -50,6 +48,13 @@ const getDisplay = () => {
   const display = useSelector(state => state.display.value)
   return display.width < 1024 ? '5%' : '2%'
 }
+
+const DivNav = styled.div`
+  display: flex;
+  @media ${devices.mobile} {
+    display: none;
+  }
+`
 
 const Container = styled.div`
   display: flex;
