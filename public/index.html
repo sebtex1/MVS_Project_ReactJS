@@ -36,5 +36,12 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://cdn.by.wonderpush.com/sdk/1.1/wonderpush-loader.min.js" async></script>
+    <script>
+    window.WonderPush = window.WonderPush || [];
+    WonderPush.push(["init", {
+        webKey: "691c8ad692956969e488adb4dfe9b49fb728da268ca881b34c97b565f36542b7",
+    }]);
+    </script>
   </body>
 </html>
