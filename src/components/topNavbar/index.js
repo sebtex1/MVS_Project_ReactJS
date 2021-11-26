@@ -7,6 +7,7 @@ import devices from '../../config/devices'
 import { SunFill } from '@styled-icons/bootstrap/SunFill'
 import { MoonStarsFill } from '@styled-icons/bootstrap/MoonStarsFill'
 import { useTranslation } from 'react-i18next'
+import Logo from '../../logo.png'
 
 const TopNavbar = () => {
   const dispatch = useDispatch()
@@ -20,7 +21,10 @@ const TopNavbar = () => {
 
   return (
     <ContainerTop>
-      <Name>{process.env.REACT_APP_NAME}</Name>
+      <Name onClick={() => history.push('/')}>
+        <LogoImg src={Logo} alt={Logo} />
+        <h1>{process.env.REACT_APP_NAME}</h1>
+      </Name>
       <ButtonPages onClick={() => history.push('/')}>
         <GamePage>{t('ListOfGames')}</GamePage>
       </ButtonPages>
@@ -64,9 +68,17 @@ const ContainerTop = styled.div`
     display: flex;
   }
 `
+const LogoImg = styled.img`
+  max-width: 15%;
+  margin-right: 3%;
+  border-radius: 10%;
+`
 
 // tags texts
-const Name = styled.h1`
+const Name = styled.div`
+  display: flex;
+  justify-center: center;
+  align-items: center;
   position: absolute;
   left: 0;
   margin-left: 2%;
