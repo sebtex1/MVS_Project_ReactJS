@@ -12,11 +12,29 @@ import GameDisplay from '../components/gameDisplay'
 import LoaderComp from '../components/loader'
 import ErrorDisplay from '../components/errorDisplay'
 
+import { onMessageListener } from '../firebaseInit'
+
 import { gsap } from 'gsap'
 
 const Home = () => {
   const dispatch = useDispatch()
   const listOfGames = useSelector(state => state.gamesApi)
+
+  const [show, setShow] = useState(false)
+  const [notification, setNotification] = useState({ title: '', body: '' })
+
+  console.log(show, notification)
+
+  onMessageListener()
+    .then(payload => {
+      setShow(true)
+      setNotification({
+        title: payload.notification.title,
+        body: payload.notification.body
+      })
+      console.log(payload)
+    })
+    .catch(err => console.log('failed: ', err))
 
   console.log(listOfGames)
   const search = useSelector(state => state.search.value)
@@ -70,6 +88,16 @@ const Home = () => {
 
   return (
     <div>
+      {show ? (
+        <ReactNotificationComponent>
+          <TextNotification>
+            {notification.title}
+            {notification.body}
+          </TextNotification>
+        </ReactNotificationComponent>
+      ) : (
+          <></>
+      )}
       <OverlayAnimation ref={layer}>
         <OverlayWrapperTop ref={layerTop}></OverlayWrapperTop>
         <OverlayText ref={boxRef}>GAME INSIDE</OverlayText>
@@ -130,6 +158,15 @@ const getDisplay = () => {
   const display = useSelector(state => state.display.value)
   return display.width < 1024 ? '5%' : '2%'
 }
+
+const ReactNotificationComponent = styled.div`
+  width: 100px;
+  height: 100px;
+`;
+
+const TextNotification = styled.p`
+  font-size: 10px;
+`;
 
 const Container = styled.div`
   display: flex;
