@@ -18,7 +18,7 @@ const Home = () => {
   const dispatch = useDispatch()
   const listOfGames = useSelector(state => state.gamesApi)
 
-  console.log(listOfGames)
+  // console.log(listOfGames)
   const search = useSelector(state => state.search.value)
   const [filteredList, setFilteredList] = useState(null)
   const { t } = useTranslation()
@@ -29,11 +29,12 @@ const Home = () => {
   const layer = useRef()
 
   useEffect(() => {
-    if (listOfGames.data === undefined || listOfGames.data === null) {
+    if (listOfGames.value.length === 0) {
       dispatch(
-        allTheActions.gamesApi.callApiGames(
-          'https://store.steampowered.com/api/featured/'
-        )
+        allTheActions.gamesApi
+          .callApiGamesLocal
+          // 'https://store.steampowered.com/api/featured/'
+          ()
       )
     }
   }, [])
@@ -56,7 +57,7 @@ const Home = () => {
       search !== ''
     ) {
       setFilteredList(
-        listOfGames.value.data.featured_win.filter(x =>
+        listOfGames.value.filter(x =>
           x.name.toLowerCase().includes(search.toLowerCase())
         )
       )
@@ -86,7 +87,6 @@ const Home = () => {
           <Tag text='Course' number='87' />
         </TagsContainer>
         <Search value='search' placeholder={t('SearchAGame')} />
-        {/* feature pour rechercher avec la value search dans le store */}
         {listOfGames.value === null && listOfGames.isError !== true ? (
           <LoaderComp />
         ) : listOfGames.isError === true ? (
@@ -94,7 +94,7 @@ const Home = () => {
         ) : null}
         <GamesContainer>
           {filteredList === null
-            ? listOfGames?.value?.data?.featured_win.map(game => {
+            ? listOfGames?.value.map(game => {
                 return (
                   <ContainerGame key={game.id}>
                     <GameDisplay

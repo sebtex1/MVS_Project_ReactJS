@@ -10,14 +10,15 @@ import ErrorDisplay from '../errorDisplay'
 const Pictures = props => {
   const dispatch = useDispatch()
   const listGames = useSelector(state => state.famousGames)
-  // console.log(listGames.data.top_sellers.items)
+  // console.log('list for carousel', listGames)
 
   useEffect(() => {
-    if (listGames.data === null || listGames.data === undefined) {
+    if (listGames.value.length === 0) {
       dispatch(
-        allTheActions.famousGames.callFamousGames(
-          'https://store.steampowered.com/api/featuredcategories/?cc=EE&amp;l=english&v=1&trailer=1%20HTTP/1.1%22%20%22-%22%20%22Valve/Steam%20HTTP%20Client%201.0%20(tenfoot)'
-        )
+        allTheActions.famousGames
+          .callFamousGamesLocal
+          // 'https://store.steampowered.com/api/featuredcategories/?cc=EE&amp;l=english&v=1&trailer=1%20HTTP/1.1%22%20%22-%22%20%22Valve/Steam%20HTTP%20Client%201.0%20(tenfoot)'
+          ()
       )
     }
   }, [])
@@ -31,10 +32,10 @@ const Pictures = props => {
         <ErrorDisplay text='Une erreur est survenue, vérifiez votre connexion ou ressayez plus tard.' />
       ) : null}
       <Carousel cols={5} rows={1} gap={'20px'}>
-        {listGames?.value?.data?.top_sellers?.items?.map(item => {
+        {listGames?.value.map(item => {
           return (
             <Carousel.Item key={item.id}>
-              <Image width='100%' src={item.large_capsule_image} />
+              <Image src={item.large_capsule_image} />
             </Carousel.Item>
           )
         })}
@@ -54,6 +55,7 @@ const Title = styled.h3`
 
 const Image = styled.img`
   border-radius: 8px;
+  width: 100%;
 `
 
 export default Pictures
