@@ -51,7 +51,7 @@ export const callApiGamesLocal = payload => dispatch => {
           short_description:
             'Créez votre exploitation, et que la récolte soit bonne ! Cultivez vos plantes, occupez-vous des animaux, gérez vos productions et relevez les défis des saisons.',
           developers: ['Giants Software'],
-          pusblishers: ['Giants Software'],
+          publishers: ['Giants Software'],
           price_final_formatted: '39,99€',
           tags: ['Simulation']
         },
@@ -65,7 +65,7 @@ export const callApiGamesLocal = payload => dispatch => {
           short_description:
             'Battlefield™ 2042 est un jeu de tir à la première personne qui marque le retour à la guerre totale ; emblématique de la franchise. Dans un futur proche où le chaos a changé le monde, adaptez-vous et triomphez sur des champs de bataille dynamiques grâce à votre escouade et un arsenal de pointe.',
           developers: ['DICE'],
-          pusblishers: ['Electronic Arts'],
+          publishers: ['Electronic Arts'],
           price_final_formatted: '59,99€',
           tags: ['Action', 'Aventure', 'Occasionnel']
         },
@@ -79,7 +79,7 @@ export const callApiGamesLocal = payload => dispatch => {
           short_description:
             "Un signal étrange... un vaisseau d'un autre monde... un voyage interplanétaire défiant la gravité, à travers le temps et l'espace.",
           developers: ['Exbleative'],
-          pusblishers: ['Future Friends Games', 'Exbleative'],
+          publishers: ['Future Friends Games', 'Exbleative'],
           price_final_formatted: '15,99€',
           tags: ['Aventure', 'Occasionnel', 'Indépendant', 'Simulation']
         },
@@ -93,7 +93,7 @@ export const callApiGamesLocal = payload => dispatch => {
           short_description:
             "Doté d'un niveau élevé de liberté, les joueurs se battront pour gagner leur place dans un monde déchiré par la guerre. Construisez des forteresses, dirigez des armées dans des batailles massives, assiégez des villes ennemies et établissez votre propre empire!",
           developers: ['Angela Game'],
-          pusblishers: ['Antiidelay'],
+          publishers: ['Antiidelay'],
           price_final_formatted: '22,49€',
           tags: [
             'Action',
@@ -116,7 +116,7 @@ export const callApiGamesLocal = payload => dispatch => {
           short_description:
             "Gunfire Reborn est un jeu d'aventure divisé en niveaux et mêlant jeu de tir à la première personne, Roguelite et JDR. Les joueurs prennent le contrôle de héros possédant diverses compétences à combiner pour varier leur expérience.",
           developers: ['Duoyi Games'],
-          pusblishers: ['Duoyi Games'],
+          publishers: ['Duoyi Games'],
           price_final_formatted: '12,59€',
           tags: ['Action', 'Aventure', 'Indépendant', 'RPG']
         },
@@ -130,7 +130,7 @@ export const callApiGamesLocal = payload => dispatch => {
           short_description:
             "Dressez-vous contre la Ruine - Contrôlez un groupe de champions de League of Legends, explorez Bilgewater et naviguez jusqu'aux Îles obscures pour découvrir ce que cache la Brume noire dans ce jeu de rôle immersif au tour par tour.",
           developers: ['Airship Syndicate'],
-          pusblishers: ['Riot Forge'],
+          publishers: ['Riot Forge'],
           price_final_formatted: '29,99€',
           tags: ['Indépendant', 'RPG']
         },
@@ -144,7 +144,7 @@ export const callApiGamesLocal = payload => dispatch => {
           short_description:
             "Un nouveau rogue-lite solo d'action/aventure par les créateurs de The Last Stand: Union City et Dead Zone. Infecté par un virus zombie, vous partez explorer un monde post-apocalyptique afin de trouver une lueur d'espoir pour les survivants. Vous pouvez encore faire la différence. N'abandonnez pas.",
           developers: ['Con Artist Games'],
-          pusblishers: ['Armor Games Studios'],
+          publishers: ['Armor Games Studios'],
           price_final_formatted: '20,99€',
           tags: ['Action', 'Aventure', 'Indépendant']
         },
@@ -158,7 +158,7 @@ export const callApiGamesLocal = payload => dispatch => {
           short_description:
             'Émergez de votre abri. Détruisez tout ce qui vous tombe sous la main. Échappez à cette île maudite. ⚔️🔨🎣🌱🌵🍰 Explorez, luttez, progressez, survivez, récupérez, fabriquez, récoltez, chassez, construisez, cultivez, réfléchissez, pêchez, cuisinez. En un mot : vivez ! À vous les joies et les déboires de ce monde post-apocalyptique !',
           developers: ['10tons Ltd'],
-          pusblishers: ['10tons Ltd'],
+          publishers: ['10tons Ltd'],
           price_final_formatted: '12,99€',
           tags: ['Action', 'Aventure', 'Indépendant', 'RPG', 'Simulation']
         }
