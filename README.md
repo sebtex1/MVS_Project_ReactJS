@@ -22,12 +22,17 @@ git clone https://github.com/sebtex1/MVS_Project_ReactJS.git
 ```
 npm i
 ```
-
-
 ## Run Project
+```
+npm run start
+```
+
+
+## Run Project with macOs
 ```
 open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 ```
+and
 ```
 npm run start
 ```
