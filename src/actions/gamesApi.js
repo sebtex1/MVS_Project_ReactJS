@@ -25,7 +25,10 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['Adobe'],
           publishers: ['Adobe'],
           price_final_formatted: '85,08€',
-          tags: ['Animation & Modélisation', 'Développement de jeu']
+          tags: [
+            { id: 51, description: 'Animation & Modélisation' },
+            { id: 60, description: 'Développement de jeu' }
+          ]
         },
         {
           id: 1348661,
@@ -39,7 +42,10 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['Paradox Development Studio'],
           publishers: ['Paradox Interactive'],
           price_final_formatted: '32,00 TL',
-          tags: ['Simulation', 'Stratégie']
+          tags: [
+            { id: 28, description: 'Simulation' },
+            { id: 2, description: 'Stratégie' }
+          ]
         },
         {
           id: 1248130,
@@ -53,7 +59,7 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['Giants Software'],
           publishers: ['Giants Software'],
           price_final_formatted: '39,99€',
-          tags: ['Simulation']
+          tags: [{ id: 28, description: 'Simulation' }]
         },
         {
           id: 1517290,
@@ -67,7 +73,11 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['DICE'],
           publishers: ['Electronic Arts'],
           price_final_formatted: '59,99€',
-          tags: ['Action', 'Aventure', 'Occasionnel']
+          tags: [
+            { id: 1, description: 'Action' },
+            { id: 25, description: 'Aventure' },
+            { id: 4, description: 'Occasionnel' }
+          ]
         },
         {
           id: 773370,
@@ -81,7 +91,12 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['Exbleative'],
           publishers: ['Future Friends Games', 'Exbleative'],
           price_final_formatted: '15,99€',
-          tags: ['Aventure', 'Occasionnel', 'Indépendant', 'Simulation']
+          tags: [
+            { id: 25, description: 'Aventure' },
+            { id: 4, description: 'Occasionnel' },
+            { id: 23, description: 'Indépendant' },
+            { id: 28, description: 'Simulation' }
+          ]
         },
         {
           id: 1371580,
@@ -96,14 +111,14 @@ export const callApiGamesLocal = payload => dispatch => {
           publishers: ['Antiidelay'],
           price_final_formatted: '22,49€',
           tags: [
-            'Action',
-            'Aventure',
-            'Indépendant',
-            'Massivement Multijoueur',
-            'RPG',
-            'Simulation',
-            'Stratégie',
-            'Accès anticipé'
+            { id: 1, description: 'Action' },
+            { id: 25, description: 'Aventure' },
+            { id: 23, description: 'Indépendant' },
+            { id: 29, description: 'Massivement Multijoueur' },
+            { id: 3, description: 'RPG' },
+            { id: 28, description: 'Simulation' },
+            { id: 2, description: 'Stratégie' },
+            { id: 70, description: 'Accès anticipé' }
           ]
         },
         {
@@ -118,7 +133,12 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['Duoyi Games'],
           publishers: ['Duoyi Games'],
           price_final_formatted: '12,59€',
-          tags: ['Action', 'Aventure', 'Indépendant', 'RPG']
+          tags: [
+            { id: 1, description: 'Action' },
+            { id: 25, description: 'Aventure' },
+            { id: 23, description: 'Indépendant' },
+            { id: 3, description: 'RPG' }
+          ]
         },
         {
           id: 1276790,
@@ -132,7 +152,10 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['Airship Syndicate'],
           publishers: ['Riot Forge'],
           price_final_formatted: '29,99€',
-          tags: ['Indépendant', 'RPG']
+          tags: [
+            { id: 23, description: 'Indépendant' },
+            { id: 3, description: 'RPG' }
+          ]
         },
         {
           id: 1266840,
@@ -146,7 +169,11 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['Con Artist Games'],
           publishers: ['Armor Games Studios'],
           price_final_formatted: '20,99€',
-          tags: ['Action', 'Aventure', 'Indépendant']
+          tags: [
+            { id: 1, description: 'Action' },
+            { id: 25, description: 'Aventure' },
+            { id: 23, description: 'Indépendant' }
+          ]
         },
         {
           id: 846770,
@@ -160,7 +187,13 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['10tons Ltd'],
           publishers: ['10tons Ltd'],
           price_final_formatted: '12,99€',
-          tags: ['Action', 'Aventure', 'Indépendant', 'RPG', 'Simulation']
+          tags: [
+            { id: 1, description: 'Action' },
+            { id: 25, description: 'Aventure' },
+            { id: 23, description: 'Indépendant' },
+            { id: 3, description: 'RPG' },
+            { id: 28, description: 'Simulation' }
+          ]
         }
       ],
       error: false

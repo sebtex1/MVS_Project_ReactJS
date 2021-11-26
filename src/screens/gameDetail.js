@@ -74,7 +74,7 @@ const GameDetails = () => {
                 {detailsGame.name} <IconStar />
               </TitleGame>
               <StyledTitle>
-                {detailsGame.genres?.map(item => {
+                {detailsGame.tags?.map(item => {
                   return (
                     <div key={item.id}>
                       <DetailTag tag={item.description} />

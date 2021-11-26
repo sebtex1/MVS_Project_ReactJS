@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import allTheActions from '../../actions'
 import Carousel from 'react-grid-carousel'
 import styled from 'styled-components'
@@ -10,6 +11,7 @@ import ErrorDisplay from '../errorDisplay'
 const Pictures = props => {
   const dispatch = useDispatch()
   const listGames = useSelector(state => state.famousGames)
+  const history = useHistory()
   // console.log('list for carousel', listGames)
 
   useEffect(() => {
@@ -35,7 +37,10 @@ const Pictures = props => {
         {listGames?.value.map(item => {
           return (
             <Carousel.Item key={item.id}>
-              <Image src={item.large_capsule_image} />
+              <Image
+                onClick={() => history.push(`/details/${item.id}`)}
+                src={item.large_capsule_image}
+              />
             </Carousel.Item>
           )
         })}
