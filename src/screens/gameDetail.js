@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import DetailVideo from '../components/gameDetails'
 import styled from 'styled-components'
@@ -19,7 +20,7 @@ const GameDetails = () => {
     state => state.gamesApi.value.filter(x => x.id.toString() === id)[0]
   )
   const listOfGames = useSelector(state => state.gamesApi.value)
-  const videoYoutube = useSelector(state => state.videoYoutube.value)
+  //const videoYoutube = useSelector(state => state.videoYoutube.value)
   const { t } = useTranslation()
   // const [isOpen, setIsOpen] = useState(false)
   // const token = localStorage.getItem('token')
