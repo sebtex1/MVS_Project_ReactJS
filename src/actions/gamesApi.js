@@ -2,6 +2,7 @@
 import axios from 'axios'
 
 export const GET_GAMES = 'GET_GAMES'
+export const SET_FAVORITES = 'SET_FAVORITES'
 
 export const getGames = payload => ({
   type: GET_GAMES,
@@ -28,7 +29,8 @@ export const callApiGamesLocal = payload => dispatch => {
           tags: [
             { id: 51, description: 'Animation & Modélisation' },
             { id: 60, description: 'Développement de jeu' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1348661,
@@ -45,7 +47,8 @@ export const callApiGamesLocal = payload => dispatch => {
           tags: [
             { id: 28, description: 'Simulation' },
             { id: 2, description: 'Stratégie' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1248130,
@@ -59,7 +62,8 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['Giants Software'],
           publishers: ['Giants Software'],
           price_final_formatted: '39,99€',
-          tags: [{ id: 28, description: 'Simulation' }]
+          tags: [{ id: 28, description: 'Simulation' }],
+          isFavorite: false
         },
         {
           id: 1517290,
@@ -77,7 +81,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 1, description: 'Action' },
             { id: 25, description: 'Aventure' },
             { id: 4, description: 'Occasionnel' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 773370,
@@ -96,7 +101,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 4, description: 'Occasionnel' },
             { id: 23, description: 'Indépendant' },
             { id: 28, description: 'Simulation' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1371580,
@@ -119,7 +125,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 28, description: 'Simulation' },
             { id: 2, description: 'Stratégie' },
             { id: 70, description: 'Accès anticipé' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1217060,
@@ -138,7 +145,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 25, description: 'Aventure' },
             { id: 23, description: 'Indépendant' },
             { id: 3, description: 'RPG' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1276790,
@@ -155,7 +163,8 @@ export const callApiGamesLocal = payload => dispatch => {
           tags: [
             { id: 23, description: 'Indépendant' },
             { id: 3, description: 'RPG' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1266840,
@@ -173,7 +182,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 1, description: 'Action' },
             { id: 25, description: 'Aventure' },
             { id: 23, description: 'Indépendant' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 846770,
@@ -193,13 +203,19 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 23, description: 'Indépendant' },
             { id: 3, description: 'RPG' },
             { id: 28, description: 'Simulation' }
-          ]
+          ],
+          isFavorite: false
         }
       ],
       error: false
     })
   )
 }
+
+export const setFavorites = payload => ({
+  type: SET_FAVORITES,
+  value: payload
+})
 
 // Du au CORS axios est remplacer sur cette API nous utilisons une base en local de leurs infos
 export const callApiGames = payload => dispatch => {

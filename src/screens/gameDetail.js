@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import allTheActions from '../actions'
 import { Star } from '@styled-icons/boxicons-regular/Star'
+import { StarFill } from '@styled-icons/bootstrap/StarFill'
 import { useParams } from 'react-router-dom'
 import GameDisplay from '../components/gameDisplay'
 import DetailTag from '../components/gameDetails/tag'
@@ -17,9 +18,6 @@ const GameDetails = () => {
   const detailsGame = useSelector(
     state => state.gamesApi.value.filter(x => x.id.toString() === id)[0]
   )
-
-  // console.log('id', id)
-  console.log(detailsGame)
   const listOfGames = useSelector(state => state.gamesApi.value)
   const videoYoutube = useSelector(state => state.videoYoutube.value)
   const { t } = useTranslation()
@@ -34,26 +32,6 @@ const GameDetails = () => {
       })
     )
   }, [])
-
-  useEffect(() => {
-    console.log('video', videoYoutube)
-  }, [videoYoutube])
-
-  // useEffect(() => {
-  //   if (id !== undefined) {
-  //     dispatch(
-  //       allTheActions.gameDetails.callDetailsGame({
-  //         url: 'https://store.steampowered.com/api/appdetails?appids=',
-  //         id: id
-  //       })
-  //     )
-  //     dispatch(
-  //       allTheActions.gamesApi.callApiGames(
-  //         'https://store.steampowered.com/api/featured/'
-  //       )
-  //     )
-  //   }
-  // }, [id])
 
   // const showPopup = () => {
   //   if( token !== null ){
@@ -71,7 +49,28 @@ const GameDetails = () => {
           {detailsGame ? (
             <div>
               <TitleGame>
-                {detailsGame.name} <IconStar />
+                {detailsGame.name}{' '}
+                {detailsGame.isFavorite ? (
+                  <IconStarFill
+                    onClick={() =>
+                      dispatch(
+                        allTheActions.gamesApi.setFavorites(
+                          Object.assign(detailsGame, { isFavorite: false })
+                        )
+                      )
+                    }
+                  />
+                ) : (
+                  <IconStar
+                    onClick={() =>
+                      dispatch(
+                        allTheActions.gamesApi.setFavorites(
+                          Object.assign(detailsGame, { isFavorite: true })
+                        )
+                      )
+                    }
+                  />
+                )}
               </TitleGame>
               <StyledTitle>
                 {detailsGame.tags?.map(item => {
@@ -169,6 +168,13 @@ const IconStar = styled(Star)`
   float: right;
   max-width: 25px;
 `
+
+const IconStarFill = styled(StarFill)`
+  float: right;
+  max-width: 25px;
+  color: yellow;
+`
+
 const GamesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
