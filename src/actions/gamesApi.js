@@ -2,6 +2,7 @@
 import axios from 'axios'
 
 export const GET_GAMES = 'GET_GAMES'
+export const SET_FAVORITES = 'SET_FAVORITES'
 
 export const getGames = payload => ({
   type: GET_GAMES,
@@ -374,6 +375,11 @@ export const callApiGamesLocal = payload => dispatch => {
     })
   )
 }
+
+export const setFavorites = payload => ({
+  type: SET_FAVORITES,
+  value: payload
+})
 
 // Du au CORS axios est remplacer sur cette API nous utilisons une base en local de leurs infos
 export const callApiGames = payload => dispatch => {

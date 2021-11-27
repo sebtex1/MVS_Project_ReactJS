@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import allTheActions from '../../actions'
 import Tag from '../tag'
 import { useHistory } from 'react-router-dom'
 import { DeleteBin } from '@styled-icons/remix-line/DeleteBin'
@@ -10,12 +11,16 @@ const GameFavoritesDisplay = props => {
   const price = props.price.split(' ')[0]
   const currency = props.price.split(' ')[1]
   const history = useHistory()
+  const dispatch = useDispatch()
 
   function handleClick() {
     props.suggestion === true
       ? history.replace(`details/${props.id}`)
       : history.push(`details/${props.id}`)
   }
+
+  const game = Object.assign({}, props)
+  console.log(game)
 
   return (
     <Container>
@@ -33,7 +38,17 @@ const GameFavoritesDisplay = props => {
               : `${price[0]}${price[1]}.${price[2]}${price[3]}`}
             {` ${currency}`}
           </Price>
-          <StyledBin />
+          <StyledBin
+            onClick={() =>
+              dispatch(
+                allTheActions.gamesApi.setFavorites(
+                  Object.assign(game, {
+                    isFavorite: props.isFavorite
+                  })
+                )
+              )
+            }
+          />
         </BinContainer>
 
         <Tag text={props.tag} />

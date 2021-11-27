@@ -1,4 +1,4 @@
-import { GET_GAMES } from '../actions/gamesApi'
+import { GET_GAMES, SET_FAVORITES } from '../actions/gamesApi'
 
 const initialState = {
   value: [],
@@ -13,6 +13,17 @@ export default (state = initialState, action) => {
         value: action.value,
         isError: action.isError
       }
+    case SET_FAVORITES:
+      return {
+        ...state,
+        value: state.value.map(
+          (game, i) =>
+            i === action.value.id
+              ? { ...game, isFavorite: action.value.isFavorite } // change l'etat favoris si l'id correspond
+              : game // ne modifie pas l'objet
+        )
+      }
+
     default:
       return state
   }
