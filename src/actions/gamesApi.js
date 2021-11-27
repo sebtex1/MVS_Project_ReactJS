@@ -14,6 +14,170 @@ export const callApiGamesLocal = payload => dispatch => {
     getGames({
       data: [
         {
+          id: 1091500,
+          name: 'Cyberpunk 2077',
+          final_price: 2999,
+          currency: 'EUR',
+          large_capsule_image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/1091500/capsule_616x353.jpg?t=1621944801',
+          short_description:
+            'Cyberpunk 2077 est un jeu d’action-aventure en monde ouvert qui se déroule à Night City, une mégalopole obsédée par le pouvoir, la séduction et les modifications corporelles. Vous incarnez V, mercenaire hors-la-loi à la recherche d’un implant unique qui serait la clé de l’immortalité.',
+          developers: ['CD PROJEKT RED'],
+          publishers: ['CD PROJEKT RED'],
+          price_final_formatted: '29,99€',
+          tags: [
+            {
+              id: 3,
+              description: 'RPG'
+            }
+          ],
+          isFavorite: false
+        },
+        {
+          id: 1174180,
+          name: 'Red Dead Redemption 2',
+          final_price: 2999,
+          currency: 'EUR',
+          large_capsule_image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/1174180/capsule_616x353.jpg?t=1618851907',
+          short_description:
+            'Red Dead Redemption 2, le jeu épique en monde ouvert de Rockstar Games acclamé par la critique et le mieux noté de cette génération de consoles, arrive maintenant sur PC avec du contenu inédit pour le mode Histoire, des améliorations graphiques et bien plus.',
+          developers: ['Rockstar Games'],
+          publishers: ['Rockstar Games'],
+          price_final_formatted: '29,99€',
+          tags: [
+            {
+              id: '1',
+              description: 'Action'
+            },
+            {
+              id: '25',
+              description: 'Aventure'
+            }
+          ],
+          isFavorite: false
+        },
+        {
+          id: 1426210,
+          name: 'It Takes Two',
+          final_price: 2479,
+          currency: 'EUR',
+          lager_capsule_image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/1426210/capsule_616x353_alt_assets_0.jpg?t=1627656469',
+          short_description:
+            'Embarquez pour un périple incroyable dans It Takes Two. Grâce au Pass ami*, invitez gratuitement un(e) ami(e) à relever avec vous une myriade de défis délicieusement déstabilisants.',
+          developers: ['Hazelight'],
+          publishers: ['Electronic Arts'],
+          price_final_formatted: '24,79€',
+          tags: [
+            {
+              id: '1',
+              description: 'Action'
+            },
+            {
+              id: '25',
+              description: 'Aventure'
+            }
+          ],
+          isFavorite: false
+        },
+        {
+          id: 354231,
+          name: 'Valve Index VR Kit',
+          final_price: 'N/A',
+          currency: 'EUR',
+          large_capsule_image:
+            'https://cdn.akamai.steamstatic.com/steam/subs/354231/capsule_616x353.jpg?t=1623444641',
+          short_description: 'N/A',
+          developers: ['Valve'],
+          publishers: ['Valve'],
+          price_final_formatted: 'N/A',
+          tags: [],
+          isFavorite: false
+        },
+        {
+          id: 5699,
+          name: 'Grand Theft Auto V: Premium Edition',
+          final_price: 'N/A',
+          large_capsule_image:
+            'https://cdn.akamai.steamstatic.com/steam/bundles/5699/qipqf90z2z7h4x3i/capsule_616x353.jpg?t=1611191314',
+          currency: 'EUR',
+          short_description: 'N/A',
+          developers: ['Rockstar Games'],
+          publishers: ['Rockstar Games'],
+          price_final_formatted: 'N/A',
+          tags: [],
+          isFavorite: false
+        },
+        {
+          id: 1293830,
+          name: 'Forza Horizon 4',
+          final_price: 2399,
+          currency: 'EUR',
+          large_capsule_image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/1293830/capsule_616x353.jpg?t=1622068013',
+          short_description:
+            'Les saisons dynamiques changent tout sur le plus grand festival automobile au monde. En solo ou en équipe, explorez les magnifiques paysages du Royaume-Uni historique dans un monde ouvert partagé.',
+          developers: ['Playground Games'],
+          publishers: ['Xbox Game Studios'],
+          price_final_formatted: '23,09€',
+          tags: [
+            {
+              id: '9',
+              description: 'Course automobile'
+            }
+          ],
+          isFavorite: false
+        },
+        {
+          id: 570940,
+          name: 'DARK SOULS™: REMASTERED',
+          final_price: 1999,
+          currency: 'EUR',
+          large_capsule_image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/570940/capsule_616x353.jpg?t=1636678269',
+          short_description:
+            "int alors l'avènement du Feu... Redécouvrez le jeu de référence salué par la critique. Dans cette splendide version remastérisée, retrouvez Lordran et ses décors époustouflants en haute définition et en 60 fps.",
+          developers: ['QLOC'],
+          publishers: ['FromSoftware, Inc', 'BANDAI NAMCO Entertainment'],
+          price_final_formatted: '19,99€',
+          tags: [
+            {
+              id: '1',
+              description: 'Action'
+            }
+          ],
+          isFavorite: false
+        },
+        {
+          id: 814380,
+          name: 'Sekiro™: Shadows Die Twice - GOTY Edition',
+          final_price: 'N/A',
+          currency: 'THB',
+          large_capsule_image:
+            'https://cdn.akamai.steamstatic.com/steam/apps/814380/capsule_616x353.jpg?t=1603904569',
+          short_description:
+            'Game of the Year - The Game Awards 2019 Best Action Game of 2019 - IGN Carve your own clever path to vengeance in the award winning adventure from developer FromSoftware, creators of Bloodborne and the Dark Souls series. Take Revenge. Restore Your Honor. Kill Ingeniously.',
+          developers: ['FromSoftware'],
+          publishers: [
+            'Activision (Excluding Japan and Asia)',
+            'FromSoftware (Japan)',
+            '方块游戏 (Asia)'
+          ],
+          price_final_formatted: '฿1,163.50',
+          tags: [
+            {
+              id: '1',
+              description: 'Action'
+            },
+            {
+              id: '25',
+              description: 'Adventure'
+            }
+          ],
+          isFavorite: false
+        },
+        {
           id: 1775390,
           name: 'Substance 3D Painter 2022',
           final_price: 8508,
@@ -28,7 +192,8 @@ export const callApiGamesLocal = payload => dispatch => {
           tags: [
             { id: 51, description: 'Animation & Modélisation' },
             { id: 60, description: 'Développement de jeu' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1348661,
@@ -45,7 +210,8 @@ export const callApiGamesLocal = payload => dispatch => {
           tags: [
             { id: 28, description: 'Simulation' },
             { id: 2, description: 'Stratégie' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1248130,
@@ -59,7 +225,8 @@ export const callApiGamesLocal = payload => dispatch => {
           developers: ['Giants Software'],
           publishers: ['Giants Software'],
           price_final_formatted: '39,99€',
-          tags: [{ id: 28, description: 'Simulation' }]
+          tags: [{ id: 28, description: 'Simulation' }],
+          isFavorite: false
         },
         {
           id: 1517290,
@@ -77,7 +244,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 1, description: 'Action' },
             { id: 25, description: 'Aventure' },
             { id: 4, description: 'Occasionnel' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 773370,
@@ -96,7 +264,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 4, description: 'Occasionnel' },
             { id: 23, description: 'Indépendant' },
             { id: 28, description: 'Simulation' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1371580,
@@ -119,7 +288,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 28, description: 'Simulation' },
             { id: 2, description: 'Stratégie' },
             { id: 70, description: 'Accès anticipé' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1217060,
@@ -138,7 +308,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 25, description: 'Aventure' },
             { id: 23, description: 'Indépendant' },
             { id: 3, description: 'RPG' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1276790,
@@ -155,7 +326,8 @@ export const callApiGamesLocal = payload => dispatch => {
           tags: [
             { id: 23, description: 'Indépendant' },
             { id: 3, description: 'RPG' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 1266840,
@@ -173,7 +345,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 1, description: 'Action' },
             { id: 25, description: 'Aventure' },
             { id: 23, description: 'Indépendant' }
-          ]
+          ],
+          isFavorite: false
         },
         {
           id: 846770,
@@ -193,7 +366,8 @@ export const callApiGamesLocal = payload => dispatch => {
             { id: 23, description: 'Indépendant' },
             { id: 3, description: 'RPG' },
             { id: 28, description: 'Simulation' }
-          ]
+          ],
+          isFavorite: false
         }
       ],
       error: false
