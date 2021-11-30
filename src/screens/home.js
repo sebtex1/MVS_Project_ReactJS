@@ -17,7 +17,6 @@ import ErrorDisplay from '../components/errorDisplay'
 import { gsap } from 'gsap'
 
 const Home = () => {
-  //test
   const dispatch = useDispatch()
   const listOfGames = useSelector(state => state.gamesApi)
   const [listOfTags, setListOfTags] = useState([])
