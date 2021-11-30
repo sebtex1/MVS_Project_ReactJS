@@ -37,7 +37,6 @@ const Login = () => {
         password: password
       })
     )
-    // console.log('TOKEN :', tokenAvailable.headers)
     localStorage.setItem('token', tokenAvailable.headers['x-access-token'])
     history.push('/')
   }

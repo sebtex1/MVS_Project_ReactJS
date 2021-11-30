@@ -13,7 +13,6 @@ const Pictures = props => {
   const dispatch = useDispatch()
   const listGames = useSelector(state => state.famousGames)
   const history = useHistory()
-  // console.log('list for carousel', listGames)
 
   useEffect(() => {
     if (listGames.value.length === 0) {

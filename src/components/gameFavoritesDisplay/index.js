@@ -21,7 +21,6 @@ const GameFavoritesDisplay = props => {
   }
 
   const game = Object.assign({}, props)
-  console.log(game)
 
   return (
     <Container>

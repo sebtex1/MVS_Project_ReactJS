@@ -17,6 +17,7 @@ const FavoritesList = () => {
   const listOfGames = useSelector(state =>
     state.gamesApi.value.filter(x => x.isFavorite === true)
   )
+
   const searchFavorite = useSelector(state => state.searchFavorite.value)
   const [filteredList, setFilteredList] = useState(null)
   const { t } = useTranslation()

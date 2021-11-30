@@ -16,7 +16,6 @@ export const callApiToken = params => dispatch => {
       password: params.password
     }
   }).then(response => {
-    console.log(response.headers['x-access-token'])
     dispatch(getToken(response))
   })
 }

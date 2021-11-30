@@ -17,7 +17,6 @@ export const callOstYoutube = payload => dispatch => {
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${queryComputed}+${payload.kind}&key=AIzaSyC9sfmtzu7w2RVqO80yjZrKGcBNfIVRyds`
     )
     .then(response => {
-      // console.log('yt', response.data.items[0].id.videoId)
       dispatch(
         getOstYoutube({
           data: response.data.items[0].id.videoId,
