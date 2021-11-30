@@ -7,6 +7,7 @@ import GameFavoritesDisplay from '../components/gameFavoritesDisplay'
 import Navbar from './navbar'
 import Header from '../components/header'
 import { useTranslation } from 'react-i18next'
+import { useHistory } from 'react-router-dom'
 import Search from '../components/search'
 import LoaderComp from '../components/loader'
 import ErrorDisplay from '../components/errorDisplay'
@@ -16,11 +17,20 @@ const FavoritesList = () => {
   const listOfGames = useSelector(state =>
     state.gamesApi.value.filter(x => x.isFavorite === true)
   )
-
-  console.log(listOfGames)
   const searchFavorite = useSelector(state => state.searchFavorite.value)
   const [filteredList, setFilteredList] = useState(null)
   const { t } = useTranslation()
+
+  const history = useHistory()
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      history.push('/favoris')
+    } else {
+      history.push('/login')
+    }
+  }, [])
 
   useEffect(() => {
     if (listOfGames.length === 0) {
