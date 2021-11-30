@@ -13,14 +13,10 @@ const Routes = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route exact path='/login'>
-          <Login />
-        </Route>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/login' component={Login} />
         <Route exact path='/details/:id' component={GameDetails} />
-        <Route exact path='/favoris' component={FavoritesList} />
+        <PrivateRoute exact path='/favoris' component={FavoritesList} />
         {/* <PrivateRoute exact path="/home">
                     <Home />
                 </PrivateRoute> */}
@@ -30,25 +26,25 @@ const Routes = () => {
   )
 }
 
-// function PrivateRoute({ children, ...rest }) {
-//     let isToken = localStorage.getItem('token')
-//     return (
-//       <Route
-//         {...rest}
-//         render={({ location }) =>
-//           isToken ? (
-//             children
-//           ) : (
-//             <Redirect
-//               to={{
-//                 pathname: "/",
-//                 state: { from: location }
-//               }}
-//             />
-//           )
-//         }
-//       />
-//     )
-//   }
+function PrivateRoute({ children, ...rest }) {
+  let isToken = localStorage.getItem('token')
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        isToken ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/',
+              state: { from: location }
+            }}
+          />
+        )
+      }
+    />
+  )
+}
 
 export default Routes
