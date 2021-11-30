@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import allTheActions from '../actions'
 import { Star } from '@styled-icons/boxicons-regular/Star'
 import { StarFill } from '@styled-icons/bootstrap/StarFill'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import GameDisplay from '../components/gameDisplay'
 import DetailTag from '../components/gameDetails/tag'
 import Navbar from './navbar'
@@ -24,8 +24,8 @@ const GameDetails = () => {
   const ostVideoId = useSelector(state => state.videoYoutubeOst.value)
   const listOfGames = useSelector(state => state.gamesApi.value)
   const { t } = useTranslation()
-  // const [isOpen, setIsOpen] = useState(false)
-  // const token = localStorage.getItem('token')
+  const history = useHistory()
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     dispatch(
@@ -42,15 +42,8 @@ const GameDetails = () => {
     )
   }, [])
 
-  // const showPopup = () => {
-  //   if( token !== null ){
-  //     setIsOpen(true)
-  //   }
-  // }
-
   return (
     <div>
-      {/* {isOpen ? <FavPopup /> : null} */}
       <Navbar />
       <DetailVideo id={videoId} kind='Trailer' playing={false} />
       <Container>
@@ -59,26 +52,32 @@ const GameDetails = () => {
             <div>
               <TitleGame>
                 {detailsGame.name}{' '}
-                {detailsGame.isFavorite ? (
-                  <IconStarFill
-                    onClick={() =>
-                      dispatch(
-                        allTheActions.gamesApi.setFavorites(
-                          Object.assign(detailsGame, { isFavorite: false })
-                        )
-                      )
-                    }
-                  />
+                {token !== null ? (
+                  <div>
+                    {detailsGame.isFavorite ? (
+                      <IconStarFill
+                        onClick={() =>
+                          dispatch(
+                            allTheActions.gamesApi.setFavorites(
+                              Object.assign(detailsGame, { isFavorite: false })
+                            )
+                          )
+                        }
+                      />
+                    ) : (
+                      <IconStar
+                        onClick={() =>
+                          dispatch(
+                            allTheActions.gamesApi.setFavorites(
+                              Object.assign(detailsGame, { isFavorite: true })
+                            )
+                          )
+                        }
+                      />
+                    )}
+                  </div>
                 ) : (
-                  <IconStar
-                    onClick={() =>
-                      dispatch(
-                        allTheActions.gamesApi.setFavorites(
-                          Object.assign(detailsGame, { isFavorite: true })
-                        )
-                      )
-                    }
-                  />
+                  <IconStar onClick={() => history.push('/login')} />
                 )}
               </TitleGame>
               <StyledTitle>
