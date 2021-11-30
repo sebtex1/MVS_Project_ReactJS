@@ -2,15 +2,15 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 
-export const GET_VIDEO_YT = 'GET_VIDEO_YT'
+export const GET_OST_YT = 'GET_OST_YT'
 
-export const getVideoYoutube = payload => ({
-  type: GET_VIDEO_YT,
+export const getOstYoutube = payload => ({
+  type: GET_OST_YT,
   value: payload.data,
   isError: payload.error
 })
 
-export const callVideoYoutube = payload => dispatch => {
+export const callOstYoutube = payload => dispatch => {
   const queryComputed = payload.query.replace(' ', '+')
   axios
     .get(
@@ -19,13 +19,13 @@ export const callVideoYoutube = payload => dispatch => {
     .then(response => {
       // console.log('yt', response.data.items[0].id.videoId)
       dispatch(
-        getVideoYoutube({
+        getOstYoutube({
           data: response.data.items[0].id.videoId,
           error: false
         })
       )
     })
     .catch(err => {
-      dispatch(getVideoYoutube({ data: null, error: true }))
+      dispatch(getOstYoutube({ data: null, error: true }))
     })
 }

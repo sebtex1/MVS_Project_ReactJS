@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
@@ -17,8 +18,25 @@ import { gsap } from 'gsap'
 const Home = () => {
   const dispatch = useDispatch()
   const listOfGames = useSelector(state => state.gamesApi)
+  const [listOfTags, setListOfTags] = useState([])
 
-  // console.log(listOfGames)
+  useEffect(() => {
+    listOfGames?.value.map(game => {
+      game.tags.map(tag => {
+        if (listOfTags.some(x => x.name === tag.description)) {
+          const index = listOfTags.findIndex(x => x.name === tag.description)
+          listOfTags[index].value = listOfTags[index].value + 1
+        } else {
+          const newArray = [
+            ...listOfTags,
+            listOfTags.push({ name: tag.description, value: 1 })
+          ]
+          setListOfTags(newArray)
+        }
+      })
+    })
+  }, [listOfGames])
+
   const search = useSelector(state => state.search.value)
   const [filteredList, setFilteredList] = useState(null)
   const { t } = useTranslation()
@@ -82,9 +100,14 @@ const Home = () => {
         <Pictures title={t('FamousGames')} />
         <Title>{t('AllTheGames')}</Title>
         <TagsContainer>
-          <Tag text='Adventure' number='112' />
+          {listOfTags.length > 0
+            ? listOfTags.map(tag => {
+                return <Tag text={tag.name} number={tag.value} />
+              })
+            : null}
+          {/* <Tag text='Adventure' number='112' />
           <Tag text='Action' number='87' />
-          <Tag text='Course' number='87' />
+          <Tag text='Course' number='87' /> */}
         </TagsContainer>
         <Search value='search' placeholder={t('SearchAGame')} />
         {listOfGames.value === null && listOfGames.isError !== true ? (

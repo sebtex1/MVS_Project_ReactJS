@@ -8,6 +8,7 @@ import gamesApi from './gamesApi'
 import famousGames from './famousGames'
 import gameDetails from './gameDetails'
 import videoYoutube from './videoYoutube'
+import videoYoutubeOst from './videoYoutubeOst'
 import tokenApi from './tokenApi'
 
 export default combineReducers({
@@ -19,5 +20,6 @@ export default combineReducers({
   famousGames,
   gameDetails,
   videoYoutube,
-  tokenApi
+  tokenApi,
+  videoYoutubeOst
 })

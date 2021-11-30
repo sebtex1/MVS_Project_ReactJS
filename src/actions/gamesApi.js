@@ -48,11 +48,11 @@ export const callApiGamesLocal = payload => dispatch => {
           price_final_formatted: '29,99€',
           tags: [
             {
-              id: '1',
+              id: 1,
               description: 'Action'
             },
             {
-              id: '25',
+              id: 25,
               description: 'Aventure'
             }
           ],
@@ -72,11 +72,11 @@ export const callApiGamesLocal = payload => dispatch => {
           price_final_formatted: '24,79€',
           tags: [
             {
-              id: '1',
+              id: 1,
               description: 'Action'
             },
             {
-              id: '25',
+              id: 25,
               description: 'Aventure'
             }
           ],
@@ -124,7 +124,7 @@ export const callApiGamesLocal = payload => dispatch => {
           price_final_formatted: '23,09€',
           tags: [
             {
-              id: '9',
+              id: 9,
               description: 'Course automobile'
             }
           ],
@@ -144,7 +144,7 @@ export const callApiGamesLocal = payload => dispatch => {
           price_final_formatted: '19,99€',
           tags: [
             {
-              id: '1',
+              id: 1,
               description: 'Action'
             }
           ],
@@ -168,11 +168,11 @@ export const callApiGamesLocal = payload => dispatch => {
           price_final_formatted: '฿1,163.50',
           tags: [
             {
-              id: '1',
+              id: 1,
               description: 'Action'
             },
             {
-              id: '25',
+              id: 25,
               description: 'Adventure'
             }
           ],

@@ -6,6 +6,7 @@ import * as gamesApi from './gamesApi'
 import * as famousGames from './famousGames'
 import * as gameDetails from './gameDetails'
 import * as videoYoutube from './videoYoutube'
+import * as videoYoutubeOst from './videoYoutubeOst'
 import * as tokenApi from './tokenApi'
 
 export default {
@@ -17,5 +18,6 @@ export default {
   famousGames,
   gameDetails,
   videoYoutube,
-  tokenApi
+  tokenApi,
+  videoYoutubeOst
 }

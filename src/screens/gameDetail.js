@@ -19,8 +19,9 @@ const GameDetails = () => {
   const detailsGame = useSelector(
     state => state.gamesApi.value.filter(x => x.id.toString() === id)[0]
   )
+  const videoId = useSelector(state => state.videoYoutube.value)
+  const ostVideoId = useSelector(state => state.videoYoutubeOst.value)
   const listOfGames = useSelector(state => state.gamesApi.value)
-  //const videoYoutube = useSelector(state => state.videoYoutube.value)
   const { t } = useTranslation()
   // const [isOpen, setIsOpen] = useState(false)
   // const token = localStorage.getItem('token')
@@ -28,8 +29,14 @@ const GameDetails = () => {
   useEffect(() => {
     dispatch(
       allTheActions.videoYoutube.callVideoYoutube({
-        query: 'Zelda BOTW',
+        query: detailsGame.name,
         kind: 'TRAILER'
+      })
+    )
+    dispatch(
+      allTheActions.videoYoutubeOst.callOstYoutube({
+        query: detailsGame.name,
+        kind: 'OST'
       })
     )
   }, [])
@@ -44,7 +51,7 @@ const GameDetails = () => {
     <div>
       {/* {isOpen ? <FavPopup /> : null} */}
       <Navbar />
-      <DetailVideo />
+      <DetailVideo id={videoId} kind='Trailer' playing={false} />
       <Container>
         <ContainerChild>
           {detailsGame ? (
@@ -126,6 +133,7 @@ const GameDetails = () => {
           </GamesContainer>
         </ContainerChild>
       </Container>
+      <DetailVideo id={ostVideoId} kind='OST' playing={true} />
     </div>
   )
 }
