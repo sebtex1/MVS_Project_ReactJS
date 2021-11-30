@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
+import devices from '../config/devices'
 import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import allTheActions from '../actions'
@@ -36,8 +37,6 @@ const Home = () => {
       })
     })
   }, [listOfGames])
-
-  console.log(listOfTags)
 
   const search = useSelector(state => state.search.value)
   const [filteredList, setFilteredList] = useState(null)
@@ -104,7 +103,7 @@ const Home = () => {
         <TagsContainer>
           {listOfTags.length > 0
             ? listOfTags.map(tag => {
-                return <Tag text={tag.name} number={tag.value} />
+                return <Tag key={tag.name} text={tag.name} number={tag.value} />
               })
             : null}
           {/* <Tag text='Adventure' number='112' />
@@ -149,11 +148,6 @@ const Home = () => {
       </Container>
     </div>
   )
-}
-
-const getDisplay = () => {
-  const display = useSelector(state => state.display.value)
-  return display.width < 1024 ? '5%' : '2%'
 }
 
 const Container = styled.div`
@@ -205,20 +199,31 @@ const OverlayWrapperBottom = styled.div`
 
 const TagsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: left;
-  margin-left: ${getDisplay};
+  margin-left: 2%;
+  @media ${devices.tablet} {
+    margin-left: 1%;
+  }
 `
 
 const GamesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  margin-left: ${getDisplay};
-  margin-top: ${getDisplay};
+  margin-left: 2%;
+  margin-top: 2%;
+  @media ${devices.tablet} {
+    margin-left: 1%;
+    margin-top: 1%;
+  }
 `
 
 const Title = styled.h3`
-  margin-left: ${getDisplay};
+  margin-left: 2%;
+  @media ${devices.tablet} {
+    margin-left: 1%;
+  }
 `
 
 export default Home

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import devices from '../../config/devices'
 import Tag from '../tag'
 import { useHistory } from 'react-router-dom'
 
@@ -37,11 +37,6 @@ const GameDisplay = props => {
   )
 }
 
-const getDisplay = () => {
-  const display = useSelector(state => state.display.value)
-  return display.width < 768 ? '150px' : '200px'
-}
-
 const Container = styled.div`
   display: flex;
   align-items: left;
@@ -58,7 +53,10 @@ const InfosContainer = styled.div`
 
 const Image = styled.img`
   border-radius: 8px;
-  width: ${getDisplay};
+  width: 150px;
+  @media ${devices.mobile} {
+    width: 200px;
+  }
 `
 
 const Title = styled.h3`

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import allTheActions from '../../actions'
 import Carousel from 'react-grid-carousel'
 import styled from 'styled-components'
+import devices from '../../config/devices'
 import LoaderComp from '../loader'
 import ErrorDisplay from '../errorDisplay'
 
@@ -49,13 +50,11 @@ const Pictures = props => {
   )
 }
 
-const getDisplay = () => {
-  const display = useSelector(state => state.display.value)
-  return display.width < 1024 ? '5%' : '2%'
-}
-
 const Title = styled.h3`
-  margin-left: ${getDisplay};
+  margin-left: 2%;
+  @media ${devices.tablet} {
+    margin-left: 1%;
+  }
 `
 
 const Image = styled.img`

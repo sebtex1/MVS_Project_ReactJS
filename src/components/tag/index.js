@@ -15,6 +15,7 @@ const Tag = props => {
 
 const TagInput = styled.button`
   margin-right: 5px;
+  margin-bottom: 5px;
   border: none;
   border-radius: 5px;
   background-color: ${props => props.theme.tagColor};

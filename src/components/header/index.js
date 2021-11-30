@@ -44,11 +44,6 @@ const Header = props => {
   )
 }
 
-const getDisplay = () => {
-  const display = useSelector(state => state.display.value)
-  return display.width < 1024 ? '5%' : '2%'
-}
-
 const DivNav = styled.div`
   display: flex;
   @media ${devices.mobile} {
@@ -60,8 +55,12 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: right;
-  margin-top: ${getDisplay};
-  margin-bottom: ${getDisplay};
+  margin-top: 2%;
+  margin-bottom: 2%;
+  @media ${devices.tablet} {
+    margin-top: 1%;
+    margin-left: 1%;
+  }
 `
 
 const StyledDot = styled.div`
@@ -77,8 +76,11 @@ const StyledDot = styled.div`
 const Name = styled.h1`
   position: absolute;
   left: 0;
-  margin-left: ${getDisplay};
+  margin-left: 2%;
   color: ${props => props.theme.textColor};
+  @media ${devices.tablet} {
+    margin-left: 1%;
+  }
 `
 const Button = styled.button`
   width: 50px;

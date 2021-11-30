@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector, useDispatch } from 'react-redux'
+import devices from '../../config/devices'
+import { useDispatch } from 'react-redux'
 import allTheActions from '../../actions'
 import Tag from '../tag'
 import { useHistory } from 'react-router-dom'
@@ -57,11 +58,6 @@ const GameFavoritesDisplay = props => {
   )
 }
 
-const getDisplay = () => {
-  const display = useSelector(state => state.display.value)
-  return display.width < 768 ? '150px' : '200px'
-}
-
 const StyledBin = styled(DeleteBin)`
   max-width: 25px;
   color: red;
@@ -89,7 +85,10 @@ const BinContainer = styled.div`
 
 const Image = styled.img`
   border-radius: 8px;
-  width: ${getDisplay};
+  width: 200px;
+  @media ${devices.mobile} {
+    width: 150px;
+  }
 `
 
 const Title = styled.h3`

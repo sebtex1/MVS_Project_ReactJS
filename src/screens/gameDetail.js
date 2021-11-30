@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import DetailVideo from '../components/gameDetails'
 import styled from 'styled-components'
+import devices from '../config/devices'
 import { useSelector, useDispatch } from 'react-redux'
 import allTheActions from '../actions'
 import { Star } from '@styled-icons/boxicons-regular/Star'
@@ -138,11 +139,6 @@ const GameDetails = () => {
   )
 }
 
-const getDisplay = () => {
-  const display = useSelector(state => state.display.value)
-  return display.width < 1024 ? '5%' : '2%'
-}
-
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -188,7 +184,11 @@ const GamesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  margin-left: ${getDisplay};
-  margin-top: ${getDisplay};
+  margin-left: 2%;
+  margin-top: 2%;
+  @media ${devices.tablet} {
+    margin-left: 1%;
+    margin-top: 1%;
+  }
 `
 export default GameDetails
