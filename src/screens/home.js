@@ -37,6 +37,8 @@ const Home = () => {
     })
   }, [listOfGames])
 
+  console.log(listOfTags)
+
   const search = useSelector(state => state.search.value)
   const [filteredList, setFilteredList] = useState(null)
   const { t } = useTranslation()
